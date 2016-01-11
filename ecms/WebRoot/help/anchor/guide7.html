@@ -1,0 +1,168 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../../css/help.css"type="text/css" >
+</head>
+
+<script>
+function clickA(v) {
+	parent.getAToc(v);
+	parent.frames['leftframe'].clearColor();
+	parent.frames['leftframe'].changeColor(v);
+	parent.changeScroll(v);
+}
+
+function shiftManager() {
+	document.getElementById('manager').style.display = '';
+	document.getElementById('user2').style.display = 'none';
+	document.getElementById('user').style.display = 'none';
+	document.getElementById('mBtn').style.background = '#A4D8ED';
+	document.getElementById('uBtn').style.background = '#FFFFFF';
+	document.getElementById('uBtn2').style.background = '#FFFFFF';
+}
+
+function shiftUser() {
+	document.getElementById('user').style.display = '';
+	document.getElementById('user2').style.display = 'none';
+	document.getElementById('manager').style.display = 'none';
+	document.getElementById('uBtn').style.background = '#A4D8ED';
+	document.getElementById('mBtn').style.background = '#FFFFFF';
+	document.getElementById('uBtn2').style.background = '#FFFFFF';
+}
+function shiftUser2() {
+	document.getElementById('user2').style.display = '';
+	document.getElementById('user').style.display = 'none';
+	document.getElementById('manager').style.display = 'none';
+	document.getElementById('uBtn2').style.background = '#A4D8ED';
+	document.getElementById('uBtn').style.background = '#FFFFFF';
+	document.getElementById('mBtn').style.background = '#FFFFFF';
+}
+</script>
+
+<body>
+
+<div class="div-outer">
+<div class="div-inner">
+
+<p class="heading heading2"><a name="Toc2_7" >2.7 &nbsp;如何管理组织资料？</a></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >请根据您的角色查看相应的流程:</p>
+<div class="spacer10"></div>
+
+<div class="indentText2 div-button" style="background:#A4D8ED" id="mBtn"><a class="linkButton" href="#Toc2_7" onClick="javascript:shiftManager();">如何发布/下载资源</a></div>
+<div class="spacer10"></div>
+
+<div class="indentText2 div-button" id="uBtn"><a class="linkButton" href="#Toc2_7" onClick="javascript:shiftUser();">如何管理资源分类</a></div>
+<div class="spacer10"></div>
+
+<div class="indentText2 div-button" id="uBtn2"><a class="linkButton" href="#Toc2_7" onClick="javascript:shiftUser2();">如何设置资源权限</a></div>
+<div class="spacer20"></div>
+
+<div id="manager">
+
+<p class="indentStep" ><a name="step1"></a>Step1.&nbsp;&nbsp;<a class="linkText" href="start2.html" title="登陆okit前台！"  onClick="javascript:clickA('Toc1_2')">登录oKit</a>前台，点击进入资源库模块</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_015.jpg"></p>
+<div class="spacer20"></div>
+
+
+<p class="indentStep"><a name="step2">Step2.&nbsp;&nbsp;在“发布资源”标签页点击“新建”按钮新建资源</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_001.jpg"><br>新建资源</p>
+<div class="spacer20"></div>
+
+<p class="indentPic"><img src="images/guide7_005.jpg"><br>填写资源信息，发布版本</p>
+<div class="spacer20"></div>
+
+<p class="indentPic"><img src="images/guide7_006.jpg"><br>填写版本</p>
+<div class="spacer20"></div>
+
+<p class="indentPic"><img src="images/guide7_007.jpg"><br>
+添加可信证据，发布版本</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step3">Step3.&nbsp;&nbsp;切换到“资源中心”标签页，点击需要下载的资源</a>进行下载</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_008.jpg"><br>下载所需资源</p>
+<div class="spacer20"></div>
+
+<p class="indentPic"><img src="images/guide7_009.jpg"><br>查看并下载相关资源</p>
+<div class="spacer20"></div>
+
+
+</div>
+
+<div id="user" style="display:none">
+
+<p class="indentStep" ><a name="step1"></a>Step1.&nbsp;&nbsp;<a class="linkText" href="start2.html" title="登陆okit前台！"  onClick="javascript:clickA('Toc1_2')">登录oKit</a>前台，点击进入资源库模块</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_015.jpg"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step2">Step2.&nbsp;&nbsp;切换到“管理分类”标签页，点击“添加分类方式”</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_002.jpg"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step3">Step3.&nbsp;&nbsp;添加分类方式</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_003.jpg"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step4">Step4.&nbsp;&nbsp;添加分类</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_004.jpg"><br>添加分类</p>
+<div class="spacer20"></div>
+
+</div>
+
+
+
+
+<div id="user2" style="display:none">
+
+<p class="indentStep" ><a name="step1"></a>Step1.&nbsp;&nbsp;<a class="linkText" href="start2.html" title="登陆okit前台！"  onClick="javascript:clickA('Toc1_2')">登录oKit</a>前台，点击进入资源库模块</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_015.jpg"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step2">Step2.&nbsp;&nbsp;切换到“发布资源”标签页，选择需要授权的资源，右键选择“资源授权”</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_010.jpg"><br>查看非公开资源，右键给其他用户授权</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step3">Step3.&nbsp;&nbsp;添加授权用户，给用户授权</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_011.jpg"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step4">Step4.&nbsp;&nbsp;给用户授予相应权限</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide7_012.jpg"><br>选择相关用户，给用户授权</p>
+<div class="spacer20"></div>
+
+
+</div>
+
+<p class="indentStep">查看更多关于资源库的资料，请<a class="linkText" href="resource.html#Toc4_13" onClick="javascript:clickA('Toc4_13')" target="rightframe">点击</a></p>
+
+<div class="spacerend"></div>
+
+
+</div>
+</div>
+</body>
+</html>

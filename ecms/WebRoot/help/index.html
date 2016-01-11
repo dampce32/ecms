@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script>
+			window.onload = function() {
+				if(location.search == "") {
+					window.frames["rightframe"].location = "anchor/main.html#Toc0";
+					window.frames["leftframe"].changeColor('Toc0');
+				} else {
+					var toc = location.hash.substring(1);
+					if(window.frames["leftframe"].subCount(toc, "_") > 2) { //四级或更深目录
+						toc = toc.slice(0, nthSubStrIndex(toc, '_', 3));
+						getAToc(toc);
+					} else { //四级以下目录
+						getAToc(toc);
+					}
+					window.frames["rightframe"].location = "anchor/" + location.search.substring(1) + location.hash;
+					window.frames["leftframe"].changeColor(toc);
+					changeScroll(toc);
+				}
+			};
+			function getAToc(v) {
+				//获取全部a标签
+				var allA = window.frames["leftframe"].document.getElementsByTagName('a');
+				var allToc = new Array();
+				var allHTML = new Array();
+				var j = 0, k = 1;
+				
+				//获取全部带锚点的a标签
+				for(var i =0,len=allA.length;i<len;i++) {
+					if(allA[i].id.indexOf('Toc') != -1) {
+						allToc[j] = allA[i];
+						j++;
+					}
+				}
+				
+				//获取当前点击的链接在数组中的位置
+				for(var i =0,len=allToc.length;i<len;i++) {
+					j = -1;
+					if(allToc[i].id == v) {
+						j = i;
+						break;
+					}
+				}
+				
+				//获取全部有html地址变化的a标签
+				for(var i =0,len=allToc.length;i<len;i++) {
+					if(i==0) {
+						allHTML[0] = allToc[i];
+					} else {
+						var ref = allToc[i].href;
+						var lastref = allToc[i-1].href;
+						if(ref.slice(0,ref.lastIndexOf('#')) != lastref.slice(0,lastref.lastIndexOf('#'))) {
+							//k从1开始
+							allHTML[k] = allToc[i];
+							k++;
+						}
+					}
+				}
+				//获取当前点击链接对应的html文件在数组中的位置
+				for(var i =0,len=allHTML.length;i<len;i++) {
+					k = -1;
+					if(allHTML[i].href.slice(0,allHTML[i].href.lastIndexOf('#')) == allToc[j].href.slice(0,allToc[j].href.lastIndexOf('#'))) {
+						k = i;
+						break;
+					}
+				}
+				
+				//改变上下节链接和显示文字
+				if(k == -1) {
+					return null;
+				} else if(k == 0 || k == 1) {
+					window.frames["upframe"].document.getElementById('pageup').href = 'main.html#Toc0';
+					window.frames["upframe"].document.getElementById('up').innerHTML = '首页';
+					window.frames["downframe"].document.getElementById('pagedown').href = allHTML[k+1].href;
+					window.frames["downframe"].document.getElementById('down').innerHTML = '下一节：' + allHTML[k+1].innerHTML;
+				} else if(k == allHTML.length-1) {
+					window.frames["upframe"].document.getElementById('pageup').href = allHTML[k-1].href;
+					window.frames["upframe"].document.getElementById('up').innerHTML = '上一节：' + allHTML[k-1].innerHTML;
+					window.frames["downframe"].document.getElementById('pagedown').href = 'end.html#Toc7';
+					window.frames["downframe"].document.getElementById('down').innerHTML = '尾页';
+				} else {
+					window.frames["upframe"].document.getElementById('pageup').href = allHTML[k-1].href;
+					window.frames["upframe"].document.getElementById('up').innerHTML = '上一节：' + allHTML[k-1].innerHTML;
+					window.frames["downframe"].document.getElementById('pagedown').href = allHTML[k+1].href;
+					window.frames["downframe"].document.getElementById('down').innerHTML = '下一节：' + allHTML[k+1].innerHTML;
+				}
+				window.frames["rightframe"].location = allHTML[k].href;
+			}
+			
+			//获取当前元素和body顶端距离
+			function getTop(elem) {
+				var height = 0;
+				while(elem.tagName.toLowerCase() != 'body') {
+					height += elem.offsetTop;
+					elem = elem.offsetParent;
+				}
+				return height;
+			}
+			
+			//根据锚点改变目录滚动条位置
+			function changeScroll(v) {
+				var selectedA = window.frames["leftframe"].document.getElementById(v);
+				window.frames["leftframe"].scroll(0,getTop(selectedA) - window.frames["leftframe"].document.body.clientHeight/4);
+			}
+			
+			//第n个子串在原字符串中的位置
+			function nthSubStrIndex(str, subStr, n) {
+				var index = 0;
+				for(var i = 0; i < n; i++) {
+					var s = str.indexOf(subStr);
+					if(s == -1) {
+						return -1;
+					} else {
+						index += s + 1;
+						str = str.substring(s + 1);
+						if(i == 0) {
+							index--;
+						} 
+					}
+				}
+				return index;
+			}
+		</script>
+		<title>骏华英语竞赛管理系统帮助</title>
+	</head>
+
+	<frameset id="col" cols="240,*" border="5" frameborder="5" framespacing="0"> 
+		<frame src="catalogue.html" name="leftframe" noresize="noresize" />
+		<frameset id="row" rows="30,*,30" border="1" frameborder="0" framespacing="0">  
+			<frame src="anchor/pageUp.html" name="upframe" scrolling="no" noresize="noresize" /> 
+			<frame src="anchor/main.html" name="rightframe" /> 
+			<frame src="anchor/pageDown.html" name="downframe" scrolling="no" noresize="noresize" /> 
+		</frameset>
+	</frameset>
+	<noframes>
+		<body>
+			<p>请使用IE6.0或更高版本浏览器，以支持frame标签。</p>
+		</body>
+	</noframes>
+
+</html>

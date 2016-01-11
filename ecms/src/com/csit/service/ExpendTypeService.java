@@ -1,0 +1,72 @@
+package com.csit.service;
+
+import com.csit.model.ExpendType;
+import com.csit.vo.ServiceResult;
+/**
+ * @Description:支出类型Service
+ * @Copyright: 福州骏华信息有限公司 (c)2013
+ * @Created Date : 2013-6-9
+ * @author jcf
+ * @vesion 1.0
+ */
+public interface ExpendTypeService extends BaseService<ExpendType, Integer> {
+
+	/**
+	 * @Description: 保存支出类型
+	 * @Create: 2013-6-9 上午09:04:49
+	 * @author jcf
+	 * @update logs
+	 * @param model
+	 * @return
+	 */
+	ServiceResult save(ExpendType model);
+	/**
+	 * @Description: 分页查询支出类型
+	 * @Create: 2013-6-9 上午09:04:57
+	 * @author jcf
+	 * @update logs
+	 * @param model
+	 * @param page
+	 * @param rows
+	 * @return
+	 */
+	String query(ExpendType model, Integer page, Integer rows);
+	/**
+	 * @Description: combobox查询
+	 * @Create: 2013-6-9 上午09:05:30
+	 * @author jcf
+	 * @update logs
+	 * @param model
+	 * @return
+	 */
+	String queryCombobox(ExpendType model);
+	/**
+	 * @Description: 批量删除支出类型
+	 * @Create: 2013-6-9 上午09:05:39
+	 * @author jcf
+	 * @update logs
+	 * @param ids
+	 * @return
+	 */
+	ServiceResult mulDelete(String ids);
+	/**
+	 * @Description: 批量修改支出类型状态
+	 * @Create: 2013-6-9 上午09:06:00
+	 * @author jcf
+	 * @update logs
+	 * @param ids
+	 * @param model
+	 * @return
+	 */
+	ServiceResult mulUpdateStatus(String ids,ExpendType model);
+	/**
+	 * @Description: 
+	 * @Create: 2013-6-9 上午09:06:13
+	 * @author jcf
+	 * @update logs
+	 * @param expendTypeId
+	 * @param updateExpendTypeId
+	 * @return
+	 */
+	ServiceResult updateArray(Integer expendTypeId, Integer updateExpendTypeId);
+}

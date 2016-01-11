@@ -1,0 +1,57 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="contactListInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		姓名：&nbsp;&nbsp;<input id="name" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		手机号码：&nbsp;&nbsp;<input id="mobilePhone" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >新建</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" id="reLoad_${id}" >刷新</a>
+	</div>
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdTitle">姓名：</td>
+					<td class="tdContent">
+						<input type="hidden" name="contactsId"  id="contactsId"/>
+						<input type="text" name="name" class="contentInput" id="name" />
+						<span style="color:red">*</span>
+					</td>
+					<td class="tdTitle">手机号码：</td>
+					<td class="tdContent">
+						<input type="text" name="mobilePhone" class="contentInput" id="mobilePhone" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">Email：</td>
+					<td class="tdContent">
+						<input type="text" name="email" class="contentInput" id="email" />
+					</td>
+					<td class="tdTitle">QQ：</td>
+					<td class="tdContent">
+						<input type="text" name="qqNumber" class="easyui-numberbox" data-options="precision:0,min:0" style="width: 250px" id="qqNumber" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">MSN：</td>
+					<td class="tdContent">
+						<input type="text" name="msn" class="contentInput" id="msn" style="width: 250px" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent" colspan="3">
+						<textarea name="note" style="width: 600px;height: 100px"></textarea>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

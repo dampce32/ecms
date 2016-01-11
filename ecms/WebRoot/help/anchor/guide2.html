@@ -1,0 +1,155 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../../css/help.css"type="text/css" >
+</head>
+
+<script>
+function clickA(v) {
+	parent.getAToc(v);
+	parent.frames['leftframe'].clearColor();
+	parent.frames['leftframe'].changeColor(v);
+	parent.changeScroll(v);
+}
+
+function shiftManager() {
+	document.getElementById('manager').style.display = '';
+	document.getElementById('user').style.display = 'none';
+	document.getElementById('mBtn').style.background = '#A4D8ED';
+	document.getElementById('uBtn').style.background = '#FFFFFF';
+}
+
+function shiftUser() {
+	document.getElementById('user').style.display = '';
+	document.getElementById('manager').style.display = 'none';
+	document.getElementById('uBtn').style.background = '#A4D8ED';
+	document.getElementById('mBtn').style.background = '#FFFFFF';
+}
+</script>
+
+<body>
+
+<div class="div-outer">
+<div class="div-inner">
+
+<p class="heading2"><a name="Toc2_2" >2.2&nbsp;&nbsp;如何管理项目工作？</a></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >请根据您的角色选择相应流程:</p>
+<div class="spacer10"></div>
+
+<div class="indentText2 div-button" style="background:#A4D8ED" id="mBtn"><a class="linkButton" href="#Toc2_2" onClick="javascript:shiftManager();">如何分配工作任务</a></div>
+<div class="spacer10"></div>
+
+<div class="indentText2 div-button" id="uBtn"><a class="linkButton" href="#Toc2_2" onClick="javascript:shiftUser();">如何查看、处理任务</a></div>
+<div class="spacer20"></div>
+
+<div id="manager">
+
+<p class="indentStep" ><a name="step1"></a>Step1.&nbsp;&nbsp;<a class="linkText" href="start2.html" title="登陆okit前台！"  onClick="javascript:clickA('Toc1_2')">登录oKit</a>前台，点击进入项目管理模块</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/start2_011.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step2">Step2.&nbsp;&nbsp;点击工作任务标签页,进入工作任务模块</a></p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide2_001.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step3"></a>Step3.&nbsp;&nbsp;打开互斥锁，同一时间只允许一个用户编辑任务</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_002.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step4"></a>Step4.&nbsp;&nbsp;添加新任务</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_003.png"><br>添加按钮，填写任务名称</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_004.png"><br>任务添加完成</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step5"></a>Step5.&nbsp;&nbsp;继续细化任务：点击刚创建的任务，重复上一步骤，添加子任务</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_005.png"><br>子任务添加完成</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step6"></a>Step6.&nbsp;&nbsp;选中需要分配的任务，点击编辑按钮，添加任务人员</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_006.png"><br>编辑按钮</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_008.png"><br>添加人员按钮</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_009.png"><br>添加任务人员</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_010.png"><br>双击修改人员参与类型，完成后点击确定</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step7"></a>Step7.&nbsp;&nbsp;发布任务，发布后参与人员将可以开始执行任务</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_011.png"><br>发布按钮</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step8"></a>Step8.&nbsp;&nbsp;当参与人员<a class="linkText" href="#Toc2_2" onClick="javascript:shiftUser();" target="rightframe">执行任务</a>，并且确认完成后，可以进行验收</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_016.png"><br>点击任务链接验收</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step9"></a>Step9.&nbsp;&nbsp;点击验收按钮，填写验收结果</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_017.png"><br>验收按钮</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_018.png"><br>填写验收结果并确认</p>
+<div class="spacer20"></div>
+
+</div>
+
+<div id="user" style="display:none">
+
+<p class="indentStep">Step1.&nbsp;&nbsp;<a class="linkText" href="start2.html" title="登陆okit前台！"  onClick="javascript:clickA('Toc1_2')">登录oKit</a>前台，在首页“我的任务”中可以看到分配给我的任务</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_012.png"><br>点击开始执行任务</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step2"></a>Step3.&nbsp;&nbsp;点击任务进入详细界面</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_013.png"><br>执行任务过程中的各种操作</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step3"></a>Step4.&nbsp;&nbsp;如果您是任务负责人，可点击分解任务标签再次细化此任务，<a class="linkText" href="#Toc2_2" onClick="javascript:shiftManager();" target="rightframe">布置任务</a>给其他人员</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_014.png"><br>操作和工作任务模块中相同</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step4"></a>Step5.&nbsp;&nbsp;确认完成够将提交任务给验收人验收</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide2_015.png"><br>执行任务过程中的各种操作</p>
+<div class="spacer20"></div>
+
+</div>
+
+<p class="indentStep">查看更多关于工作任务的资料，请<a class="linkText" href="task.html#Toc4_2_5" onClick="javascript:clickA('Toc4_2_5')" target="rightframe">查看</a></p>
+
+<div class="spacerend"></div>
+
+</div>
+</div>
+</body>
+</html>

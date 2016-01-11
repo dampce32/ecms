@@ -1,0 +1,230 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="competitionInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		赛事编号：&nbsp;&nbsp;<input id="codeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		赛事名称：&nbsp;&nbsp;<input id="nameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		状态：&nbsp;&nbsp;<select id="statusSearch" class="easyui-combobox" class="queryInput" style="width: 50px" data-options="editable:false" >  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>
+						    <option value="">所有</option>  
+						</select>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#m_add_${id}',plain:true,iconCls:'icon-add'" id="tbAdd_${id}">新建</a>    
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+		<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#state_${id}',plain:true,iconCls:'icon-state'" id="tbState_${id}">状态</a> 
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-role-right',plain:true" id="configuration_${id}" >赛事配置</a>  
+	</div>
+	<div id="m_add_${id}" style="width:90px;">
+		<div data-options="name:'addNew',iconCls:'icon-add'">新建</div>
+		<div data-options="name:'addCopy',iconCls:'icon-copy'">复制新建</div>
+	</div>
+	<div id="state_${id}" style="width:90px;">
+		<div data-options="name:'1',iconCls:'icon-info'">启用</div>
+		<div data-options="name:'0',iconCls:'icon-warn'">禁用</div>
+	</div>
+	<div id="editCopyDialog_${id}">
+		<form method="post" name="editCopyForm" id="editCopyForm_${id}">
+			<input type="hidden" name="copyItems"  id="copyItems"/>
+			<input type="hidden" name="copyCompetitionId"  id="copyCompetitionId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">赛事编号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="competitionCode" id="competitionCode" style="width: 300px;"/>
+						<span style="color:red">*</span>
+					</td>
+					<td rowspan="7" colspan="2" style="padding: 10px 0px 0px 10px">	
+						<img src="#" width="200" height="200" id="competititionCopyPic"/>
+					</td> 
+				</tr>
+				<tr>
+					<td class="tdTitle">赛事名称：</td>
+					<td class="tdContent">
+						<input type="text" name="competitionName" style="width: 300px;height: 60px;" id="competitionName" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上传图片：</td>
+					<td class="tdContent">
+						<div id="uploadCopyCompetititionPicture" style="*margin:2px 0px 0px 5px;width: 250px;"></div>
+						<input type="hidden" name="picture.pictureId" id="picCopyId">
+						<span style="color:red;float: right;margin-top: -25px">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">开始时间：</td>
+					<td class="tdContent">
+						<input type="text" name="beginDate" class="Wdate" id="beginDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate\');}',minDate:'%y-%M-%d %H:%m:%s'})" style="width: 300px;"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">结束时间：</td>
+					<td class="tdContent">
+						<input type="text" name="endDate" class="Wdate" style="width: 300px;" id="endDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'beginDate\');}'})"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上级赛事：</td>
+					<td class="tdContent">
+						<input type="text" name="parentCompetition.competitionId" class="contentInput" id="competition" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" class="easyui-combobox" name="status" class="contentInput" style="width: 300px;" data-options="editable:false" >  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>  
+						</select><span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">赛事简要说明：</td>
+					<td class="tdContent" colspan="3">
+						<textarea name="competitionNote" style="width:100%;height: 80px"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent" colspan="3">
+						<textarea name="note" style="width:100%;height: 50px;margin-bottom: 5px"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">复制项：</td>
+					<td colspan="3"><div id="copyItem"></div></td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="competitionId"  id="competitionId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">赛事编号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="competitionCode" id="competitionCode" style="width: 300px;"/>
+						<span style="color:red">*</span>
+					</td>
+					<td rowspan="7" colspan="2" style="padding: 10px 0px 0px 10px">	
+						<img src="#" width="200" height="200" id="competititionPic"/>
+					</td> 
+				</tr>
+				<tr>
+					<td class="tdTitle">赛事名称：</td>
+					<td class="tdContent">
+						<input type="text" name="competitionName" style="width: 300px;" id="competitionName" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上传图片：</td>
+					<td class="tdContent">
+						<div id="uploadCompetititionPicture" style="*margin:2px 0px 0px 5px;width: 250px"></div>
+						<input type="hidden" name="picture.pictureId" id="picId">
+						<span style="color:red;float: right;margin-top: -25px">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">开始时间：</td>
+					<td class="tdContent">
+						<input type="text" name="beginDate" class="Wdate" id="beginDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endDate\');}',minDate:'%y-%M-%d %H:%m:%s'})" style="width: 300px;"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">结束时间：</td>
+					<td class="tdContent">
+						<input type="text" name="endDate" class="Wdate" style="width: 300px;" id="endDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'beginDate\');}'})"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上级赛事：</td>
+					<td class="tdContent">
+						<input type="text" name="parentCompetition.competitionId" class="contentInput" id="competition" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" class="easyui-combobox" name="status" class="contentInput" style="width: 300px;" data-options="editable:false" >  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>  
+						</select><span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">赛事简要说明：</td>
+					<td class="tdContent" colspan="3">
+						<textarea name="competitionNote" style="width:100%;height: 100px"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent" colspan="3">
+						<textarea name="note" style="width:100%;height: 100px"></textarea>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+	
+	<div id="competitionConfigurationDialog_${id}">
+		<div data-options="region:'center'" style="width: 100%;height:100%">
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'center',border:false" style="border-left: 0px;border-top: 0px;border-bottom: 0px;">
+		    		<div id="gapList" data-options="border:false" ></div>
+		    	</div>
+		    	<div data-options="region:'east',split:true,border:false"  style="width: 300px;overflow: hidden;">
+		    		<div id="prizeList" data-options="border:false"></div>
+				</div>
+		    </div>
+		</div>
+	</div>
+	<div id="groupDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false"  class="queryContent" id="queryContentGroup_${id}">
+				组别编号：&nbsp;&nbsp;<input name="groupCode" id="groupCodeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				组别名称：&nbsp;&nbsp;<input name="groupName" id="groupNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="searchGroup" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="groupList"></div>
+			</div>
+		</div>
+	</div>
+	<div id="paperDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false"  class="queryContent" id="queryContentPaper_${id}">
+				参赛组别：&nbsp;&nbsp;<input id="groupSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				出题教师：&nbsp;&nbsp;<input id="teacherSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="searchPaper" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="paperList"></div>
+			</div>
+		</div>
+	</div>
+	<div id="prizeDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false"  class="queryContent" id="queryContentPrize_${id}">
+				奖项：&nbsp;&nbsp;<input id="nameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="searchPrize" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="prizeViewList"></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+body{
+
+}
+#main{
+	width: 860px;
+	background-color: rgb(250,250,250);
+}
+.title{
+	text-align: left;
+	background-color: rgb(204,204,255);
+	color: rgb(241,130,71);
+	height: 30px;
+	line-height: 30px;
+	overflow:hidden;
+	padding-left: 10px;
+}
+.content{
+	padding:0px 0px 5px 0px;
+}
+table{
+	width: 780px;
+}
+.tdTitle{
+	text-align: right;
+	width: 120px;
+}
+.tdContent{
+	width: 270px;
+}
+.contentInput{
+	width: 200px;
+}

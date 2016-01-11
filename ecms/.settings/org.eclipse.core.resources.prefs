@@ -1,0 +1,26 @@
+#Wed Jul 17 16:05:01 CST 2013
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/competition=UTF-8
+encoding//WebRoot/WEB-INF/competition/competition.html=UTF-8
+encoding//WebRoot/WEB-INF/competition/competitionPrizeStudent.html=UTF-8
+encoding//WebRoot/WEB-INF/competition/nextCompetitionStudent.html=UTF-8
+encoding//WebRoot/WEB-INF/contacts/historyList.html=UTF-8
+encoding//WebRoot/WEB-INF/contacts/mailsHistory.html=UTF-8
+encoding//WebRoot/WEB-INF/contacts/mailsQueue.html=UTF-8
+encoding//WebRoot/WEB-INF/contacts/mailsSender.html=UTF-8
+encoding//WebRoot/WEB-INF/contacts/message.html=UTF-8
+encoding//WebRoot/WEB-INF/dict/group.html=UTF-8
+encoding//WebRoot/WEB-INF/enroll/enroll.html=UTF-8
+encoding//WebRoot/WEB-INF/enroll/student.html=UTF-8
+encoding//WebRoot/WEB-INF/information/competitionPhoto.html=UTF-8
+encoding//WebRoot/WEB-INF/information/information.html=UTF-8
+encoding//WebRoot/WEB-INF/subject/cloze.html=UTF-8
+encoding//WebRoot/WEB-INF/subject/fill.html=UTF-8
+encoding//WebRoot/WEB-INF/subject/judgment.html=UTF-8
+encoding//WebRoot/WEB-INF/subject/read.html=UTF-8
+encoding//WebRoot/WEB-INF/subject/uniterm.html=UTF-8
+encoding//WebRoot/WEB-INF/system/messageConfig.html=UTF-8
+encoding//WebRoot/WEB-INF/system/registMessageClient.html=UTF-8
+encoding//WebRoot/WEB-INF/system/systemConfig.html=UTF-8
+encoding//WebRoot/WEB-INF/system/teacher.html=UTF-8
+encoding/<project>=UTF-8

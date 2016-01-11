@@ -1,0 +1,332 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../../css/help.css"type="text/css" >
+</head>
+<script>
+function clickA(v) {
+	parent.getAToc(v);
+	parent.frames['leftframe'].clearColor();
+	parent.frames['leftframe'].changeColor(v);
+	parent.changeScroll(v);
+}
+</script>
+
+<body>
+<div class="div-outer">
+<div class="div-inner">
+
+
+<p class="heading3"><a name="Toc4_2_5">4.2.5&nbsp;&nbsp;工作任务</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal" style="font-weight:bold;">工作任务模块主要实现了项目工作的计划、分配和完成进度管理。工作任务包括两种视图：列表方式，甘特图方式。</p>
+<p class="indentNormal" style="font-weight:bold;">点击查看<a class="linkText" href="guide2.html#Toc2_2" onClick="javascript:clickA('Toc2_2')">如何管理项目工作？</a></p>
+<div class="spacer10"></div>
+
+<p class="heading4"><a name="Toc4_2_5_1">4.2.5.1&nbsp;&nbsp;列表方式</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">在列表方式中，任务以列表的方式展现，方便用户直观地查看和处理任务。列表方式的主界面。如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic" ><img src="images/task_001.png"><br>图&nbsp;列表方式主界面</p>
+<div class="spacer20"></div>
+
+
+<p class="heading5">4.2.5.1.1&nbsp;&nbsp;任务树管理</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">任务树中各按钮功能如下图所示：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_002.png"><br>图&nbsp;任务树各按钮</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">1、开始编辑与退出编辑</p>
+<p class="indentNormal">（1）开始编辑：任务列表默认为只读状态，选择任务树工具栏的“开始编辑”按钮可以对任务列表进行操作。</p>
+<p class="indentNormal">（2）退出编辑：任务列表处于编辑状态时，选择任务树工具栏的“退出编辑”按钮则任务列表退出编辑变为只读状态。</p>
+
+<p class="indentTips" style="font-weight:bold;">Tips：</p>
+<p class="indentTips">系统不允许多个用户同时修改同一个项目的工作任务信息。所以当其他用户在编辑工作任务（激活了开始编辑按钮）时，您将无法修改工作任务信息，对您来说本项目的工作任务处于锁定状态。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">2、添加任务/子任务</p>
+<p class="indentNormal">在任务树中选中”所有任务“，点击”添加“按钮或相应的右键菜单项，可以添加新任务；在任务树中选中一个任务，点击”添加“按钮或相应的右键菜单项，可以分解该任务，添加该任务的子任务。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">3、修改任务</p>
+<p class="indentNormal">在任务树中选择一个任务，点击”修改“按钮或相应右键菜单项可以修改任务的名称。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">4、删除任务</p>
+<p class="indentNormal">在任务树中选择一个任务，点击”删除“按钮或相应右键菜单项将弹出确认删除窗口，确认无误后可以删除任务。</p>
+<p class="indentTips" style="font-weight:bold;">Tips：</p>
+<p class="indentTips">1、确认删除机制是为了防止用户误删数据，因为任务的删除是不可恢复的。</p>
+<p class="indentTips">2、选中任务的所有子任务（如果有的话）将被一并删除。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">5、左移/右移（升级任务/降级任务）</p>
+<p class="indentNormal">在任务树中选择一个或多个任务，点击”升级任务“按钮将升级所选任务；点击”降级任务“按钮将降级所选任务。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">6、拖拽任务</p>
+<p class="indentNormal">在任务树中选择一个任务，拖拽该任务可调整该任务的位置、层次。部分效果同升级任务/降级任务。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">7、全部展开/全部折叠</p>
+<p class="indentNormal">点击“全部展开”按钮将展开所有任务（及其子任务）；点击“全部折叠”按钮将折叠所有任务（及其子任务）。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">8、统计进度</p>
+<p class="indentNormal">选中“所有任务”，点击“统计进度”按钮，将统计所有任务的完成比例；选中某个概要任务，点击“统计进度”按钮，将统计该概要任务（及其子任务）的完成比例。</p>
+
+<div class="spacer10"></div>
+<p class="heading5">4.2.5.1.2&nbsp;&nbsp;任务列表管理</p>
+<div class="spacer10"></div>
+
+<p class="indentTips" style="font-weight:bold;">Tips：任务树与任务列表</p>
+<p class="indentTips">选中任务树中某个节点（根目录、概要任务或某个叶子任务），任务列表中会列出相应的任务及其子任务。勾选“所有下级任务”后，任务列表中还会列出相应任务的全部子任务。</p>
+<div class="spacer10"></div>
+<p class="indentNormal">任务列表中各按钮如下图所示：</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_003.png"><br>图&nbsp;任务列表各按钮</p>
+<div class="spacer20"></div>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">1、发布任务</p>
+<p class="indentNormal">选中未发布的任务，点击“发布”按钮可以发布任务。</p>
+<p class="indentTips">Tips：任务发布后，任务处理人将在首页任务列表中看到该任务，并处理。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">2、取消发布</p>
+<p class="indentNormal">选中已发布的任务，点击“取消发布”按钮可以取消发布该任务。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">3、编辑任务信息</p>
+<p class="indentNormal">选中一个任务，点击“编辑”按钮可以编辑该任务，如下图：</p>
+<p class="indentNormal">任务信息包括基本信息，任务状态，参与人员，风险列表，进展情况报告，任务文件以及变更历史。</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_004.png"><br>图&nbsp;编辑任务信息</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal">（1）基本信息：用户可以修改任务的基本信息，包括名称，重要度，计划/实际的开始时间、借宿时间、任务描述以及交付计划。</p>
+<p class="indentNormal">（2）任务状态：用户可以修改任务的状态，任务在不同的状态时，可做的操作并不一致。</p>
+<p class="indentNormal">（3）参与人员：用户可以为任务指定处理人，处理人包括四类：任务负责人，任务参与者，任务关注人以及任务验收人。<span style="color:#F00;font-weight:bold;">双击可修改参与类型。</span></p>
+<p class="indentNormal">（4）风险列表：用户可以管理任务风险，包括添加风险，关闭风险，删除风险。风险信息会通过邮件提醒任务参与者。</p>
+<p class="indentNormal">（5）提交报告或反馈：用户可以提交报告或反馈，提交报告或反馈时会通过邮件提醒任务参与者。</p>
+<p class="indentNormal">（6）任务文件：任务发布者，参与者均可以提交任务文件。</p>
+<p class="indentNormal">（7）变更历史：任务的任何变更信息都会被记录在变更历史中。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">4、查看任务信息</p>
+<p class="indentNormal">选中一个任务，点击“查看任务信息”按钮可以查看任务详细信息，如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_005.png"><br>图&nbsp;任务信息</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">5、指定处理人</p>
+<p class="indentNormal">选中一个任务，点击“指定处理人”按钮可以打开指定处理人界面。用户可以为任务指定（追加或覆盖）处理人，处理人包括四类：任务负责人，任务参与者，任务关注人以及任务验收人。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">6、生成报表</p>
+<p class="indentNormal">点击“生成报表”按钮，将弹出报表输出条件选择见面，选择合适的条件并输出报表。生成的报表显示了表显示“人员与工分统计图”、“项目工分统计图”、“任务状态统计图”、“按时间段统计工分图”“人员与任务统计表”、“项目与任务统计表”“任务统计表”、“按时间段统计工分表”等。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">7、导出任务</p>
+<p class="indentNormal">“点击“导出”按钮，用户可以将任务以xml文件的形式导出全部任务</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">8、任务检索</p>
+<p class="indentNormal">用户可以按名称检索任务，也可以按人员，状态等信息详细检索任务。</p>
+
+
+<p class="heading4"><a name="Toc4_2_5_2">4.2.5.2&nbsp;&nbsp;甘特图方式</a></p>
+<div class="spacer10"></div>
+<p class="indentNormal">在甘特图显示方式中，任务以列表和甘特图的方式展现，使用户更加直观的查看任务的进展情况与任务之间的关联关系。甘特图方式的主界面，如下图所示:</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_006.png"><br>图&nbsp;任务甘特图</p>
+<div class="spacer20"></div>
+
+<p class="indentTips" style="font-weight:bold">Tips:</p>
+<p class="indentTips">1、列表方式和甘特图方式中的锁互斥。</p>
+<p class="indentTips">2、甘特图方式与列表方式只是任务的显示方式不一样，基本的功能都是一致的，故相同的功能不再赘述，本节主要介绍甘特图与列表方式中特有的功能和操作。</p>
+
+
+<div class="spacer10"></div>
+<p class="heading5">4.2.5.1.2&nbsp;&nbsp;甘特图基本功能</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">本节将描述与列表方式相比独有的功能，甘特图各按钮功能如下图：</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_007.png"><br>图&nbsp;甘特图按钮功能</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">1	、任务列表与甘特图</p>
+<p class="indentNormal">（1）在甘特图方式中，左侧的任务列表与右侧的甘特图中的任务是一一对应的。选中甘特图中的任务，左侧任务列表中该任务也会被选中。</p>
+<p class="indentNormal">（2）在任务列表中展开概要任务，甘特图中相应的任务也会随之展开，反义亦然。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">2、查看节点</p>
+<p class="indentNormal">点击“查看节点”按钮，选择某个节点，可以查看节点在甘特图中的位置，便于用户查看节点内的任务进展情况。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">3、转到开始</p>
+<p class="indentNormal">点击“转到开始”按钮，甘特图会转到起始位置</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">4、隐藏列表</p>
+<p class="indentNormal">点击“隐藏列表”按钮，将隐藏左侧任务列表。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">4、调整甘特图</p>
+<p class="indentNormal">点击“放大标尺”、“缩小标尺”、选择“回到”某位置，选择“标尺”可以调整甘特图的当前位置以及显示大小。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">5、查看甘特图</p>
+<p class="indentNormal">（1）概要任务，叶子任务，各状态的任务在甘特图中分别如上图所注显示。</p>
+<p class="indentNormal">（2）蓝色线处于当前日期。</p>
+<p class="indentNormal">（3）绿色线处于所选节点日期。</p>
+<p class="indentNormal">（4）拖动滚动条可以查看更多任务信息。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">5、甘特图操作</p>
+<p class="indentNormal">（1）鼠标放置在甘特图中某任务上，将显示该任务的信息。</p>
+<p class="indentNormal">（2）双击甘特图中的某任务，将打开任务编辑窗口。</p>
+<p class="indentNormal">（3）选中任务，可以整体挪动任务以修改任务的计划时间段（工期不变，提前或推迟任务）。</p>
+<p class="indentNormal">（4）选中任务的边界（开始或结束），可以拖动以修改任务的时间（计划开始时间或计划完成时间）。</p>
+<p class="indentNormal">（5）选中任务中间的进度条，可以修改任务完成比例（进行中的任务）。</p>
+
+
+<div class="spacer10"></div>
+<p class="heading4"><a name="Toc4_2_5_3"> 4.2.5.3&nbsp;&nbsp;任务查看与处理</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">任务发布后，任务处理人在oKit首页将看到该任务，如下图：</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_008.png"><br>图&nbsp;首页的任务</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal">点击可进入任务详细信息界面，任务详细信息包括基本信息与任务分解两个页面，以下分别加以介绍。</p>
+
+<div class="spacer10"></div>
+<p class="heading5">4.2.5.3.1&nbsp;&nbsp;基本信息</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal">基本信息界面列出了任务的所有信息，包括任务名称、计划/实际的开始时间和完成时间、剩余时间、计划工期、完成比例、任务描述、交付计划、参与人员、分工安排、风险、报告与反馈、任务文件以及变更历史。</p>
+
+<p class="indentNormal">根据在任务中参与角色的不同（负责人，验收人，参与者）、任务所处状态的不同，用户可以修改实际任务处理时间，上报任务完成进度，提交任务风险、报告与反馈、任务文件，确认任务完成，验收任务。基本信息界面如下所示：</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_009.png"><br>图&nbsp;任务基本信息</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">1、修改实际开始时间</p>
+<p class="indentNormal">所上图所注，点击“修改”按钮可以修改任务实际开始时间。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">2、修改完成比例</p>
+<p class="indentNormal">在任务进行过程中，任务参与者可以随时上报任务进度。点击修改完成比例即可，如下图：</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_010.png"><br>图&nbsp;修改完成比例</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">3、管理任务风险</p>
+<p class="indentNormal">任务参与者可以添加、关闭和删除风险，如下图所示：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_011.png"><br>图&nbsp;管理任务风险</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">4、管理报告与反馈</p>
+<p class="indentNormal">任务参与者可以添加、删除报告与反馈，如下图所示：</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_012.png"><br>图&nbsp;管理任务报告与反馈</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">5、管理任务文件</p>
+<p class="indentNormal">任务参与者可以添加、删除和下载任务文件，如下图所示：</p>
+
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_013.png"><br>图&nbsp;管理任务文件</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">6、提交任务</p>
+<p class="indentNormal">点击“确认完成”，即可提交任务，任务提交后，状态转换为“已完成”，并从用户的任务列表中移除。如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_014.png"><br>图&nbsp;提交任务</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal" style="font-weight:bold;">7、验收任务</p>
+<p class="indentNormal">任务完成后，任务验收人的首页会出现验收任务，如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_015.png"><br>图&nbsp;验收任务1</p>
+<div class="spacer20"></div>
+<p class="indentNormal">点击进入基本信息界面，点击验收该任务，如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_016.png"><br>图&nbsp;验收任务2</p>
+<div class="spacer20"></div>
+<p class="indentNormal">弹出验收任务界面，输入验收信息，如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_017.png"><br>图&nbsp;验收任务3</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal">验收完成后，查看任务验收信息，如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_018.png"><br>图&nbsp;验收任务4</p>
+<div class="spacer20"></div>
+
+<p class="heading5"><a name="Toc4_2_5_3_2">4.2.5.3.2&nbsp;&nbsp;任务分解</a></p>
+<div class="spacer10"></div>
+<p class="indentNormal">oKit2.5版本开始支持任务分解，即任务负责人可以将任务分解为多个子任务。任务分解界面如下所示：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_019.png"><br>图&nbsp;任务分解</p>
+<div class="spacer20"></div>
+<p class="indentNormal">不难发现，任务分解的界面与工作任务列表方式的界面与功能几乎是一致的。不一样的是，在任务分解中，被分解的任务作为任务树的根节点。</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">1、分解任务</p>
+<p class="indentNormal">点击“开始编辑”按钮，各操作按钮将被激活，为该任务添加子任务即可，如下图所示：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_020.png"><br>图&nbsp;任务分解</p>
+<div class="spacer20"></div>
+
+<p class="indentTips" style="font-weight:bold">Tips:</p>
+<p class="indentTips">1、仅任务负责人可以分解任务，其他任务参与者在任务分解界面仅能查看任务分解情况，不能操作。</p>
+<p class="indentTips">2、只有非锁定状态的任务才能被分解。</p>
+<p class="indentTips">3、分解的各任务，其负责人能各自分解其任务，以此类推..</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">2、开始编辑与退出编辑</p>
+<p class="indentNormal">不难发现，在工作任务模块中，想要编辑任务，必须先点击“开始编辑”按钮。多人同时编辑任务往往引起数据不统一，因而oKit引入了互斥锁机制，同一时刻仅允许一个人编辑工作任务模块数据。</p>
+<p class="indentNormal">点击“开始编辑”按钮前，图标显示为锁定形状，如图&nbsp;<img src="images/task_021.png">&nbsp;</p>
+<p class="indentNormal">点击“开始编辑”按钮后，图标显示为开锁形状，如图&nbsp;<img src="images/task_022.png">&nbsp;</p>
+
+<div class="spacer10"></div>
+<p class="indentNormal" style="font-weight:bold;">3、锁定状态</p>
+<p class="indentNormal">在任务分解中，任务负责人同样需要先点击“开始编辑”按钮，然后才能分解任务。我们为任务锁定状态作如下定义：</p>
+
+<div class="spacer10"></div>
+<p class="indentTips" style="font-weight:bold">锁定状态：</p>
+<p class="indentTips" style="font-weight:bold">1、任务负责人在任务分解界面，点开“开始编辑”按钮（即图标为开锁形状时），则该任务处于锁定状态。锁定人为任务负责人</p>
+<p class="indentTips" style="font-weight:bold">2、某任务处于锁定状态时，其全部子任务均处于锁定状态。子任务的锁定人是父任务的锁定人</p>
+<p class="indentTips" style="font-weight:bold">3、当某任务被锁定时，锁定人以外的用户均无法编辑该任务，且该任务显示为锁定状态，如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic" ><img src="images/task_023.png"><br>图&nbsp;任务锁定</p>
+
+<div class="spacer20"></div>
+<p class="indentNormal" style="font-weight:bold;">查看工作任务处理流程请点击<a class="linkText" href=guide2.html onClick="javascript:clickA('Toc1_2')">如何管理项目工作？</a></p>
+
+<p class="spacerend">
+
+</div>
+</div>
+</body>
+
+</html>

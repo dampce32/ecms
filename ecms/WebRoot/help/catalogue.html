@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8" />
+
+<style>
+p a {
+	cursor:pointer;
+	line-height:115%;
+	color:#333;
+	text-decoration:none;
+}
+
+p a:hover {
+	text-decoration:underline;
+}
+
+p.Title {
+	text-align:center;
+	line-height:115%;
+	layout-grid-mode:char;
+	font-size:14.0pt;
+	font-family:Helvetica, Calibri, Tahoma, Arial, 微软雅黑, 宋体, sans-serif;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+p.MsoToc1 {
+	margin:6px;
+	margin-left:15px;
+	line-height:115%;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:Helvetica, Calibri, Tahoma, Arial, 微软雅黑, 宋体, sans-serif;
+	font-weight:bold;
+	
+}
+
+p.MsoToc2 {
+	margin:6px;
+	margin-left:15px;
+	margin-bottom:6px;
+	line-height:115%;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:Helvetica, Calibri, Tahoma, Arial, 微软雅黑, 宋体, sans-serif;
+	font-weight:normal;
+}
+
+p.MsoToc3 {
+	margin:6px;
+	margin-left:15px;
+	margin-bottom:6px;
+	line-height:115%;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	font-family:Helvetica, Calibri, Tahoma, Arial, 微软雅黑, 宋体, sans-serif;
+	font-weight:normal;
+}
+</style>
+
+<script type="text/javascript">/*<![CDATA[*/
+//扩展firefox，支持outerHTML
+if(typeof(HTMLElement) != "undefined" && (navigator.userAgent.toLowerCase().indexOf("firefox") > 0)) {
+	HTMLElement.prototype.__defineGetter__("outerHTML", function() {
+		var a = this.attributes, str = "<" + this.tagName, i = 0;
+		for(; i < a.length; i++)
+			if(a[i].specified)
+				str += " " + a[i].name + '="' + a[i].value + '"';
+		if(!this.canHaveChildren)
+			return str + " />";
+		return str + ">" + this.innerHTML + "</" + this.tagName + ">";	
+	});
+	
+	HTMLElement.prototype.__defineSetter__("outerHTML", function(s) {
+		var r = this.ownerDocument.createRange();
+		r.setStartBefore(this);
+		var df = r.createContextualFragment(s);
+		this.parentNode.replaceChild(df, this);
+		return s;
+	});
+		
+	HTMLElement.prototype.__defineGetter__("canHaveChildren", function() {
+		return !/^(area|base|basefont|col|frame|hr|img|br|input|isindex|link|meta|param)$/.test(this.tagName.toLowerCase());
+	});
+}
+/*]]>*/</script>
+
+<script>
+
+function aClick(v) {
+	clearColor();
+	updateColor(v);
+	parent.getAToc(v);
+}
+
+//展开收起div
+function showToc(v) {
+	var tocDiv = document.getElementById("dtoc" + v);
+	var tocA = document.getElementById("atoc" + v);
+	if (tocDiv.style.display == 'none') {
+		tocDiv.style.display = '';
+		tocA.innerHTML = '- ';
+	} else {
+		tocDiv.style.display = 'none';
+		tocA.innerHTML = '+';
+	}
+}
+
+//清除已存在的高亮节点
+function clearColor() {
+	if(document.getElementById('selection') != null) {
+		document.getElementById('selection').outerHTML = document.getElementById('selection').innerHTML;
+	}
+};
+
+//高亮当前节点
+function updateColor(v) {
+	if(v=='Toc0')return;
+	else{
+	var vText = document.getElementById(v).innerHTML;
+	document.getElementById(v).innerHTML = "<span style='color:#2299EB' id='selection'>" + vText + "</span>";
+}
+}
+//在index中调用，防止页面没加载完全找不到元素(用于从按钮进入帮助)
+function changeColor(v) {
+	if(v != '') {
+		if(subCount(v, "_") > 2) { //四级或更深的目录
+			var second = v.indexOf("_", v.indexOf("_") + 1);
+			v = v.slice(0, v.indexOf("_", second + 1));
+			updateColor(v);
+			showToc(v.substring(3).slice(0, v.substring(3).lastIndexOf('_')));
+		} else if(subCount(v, "_") > 1) { //三级目录
+			updateColor(v);
+			v = v.substring(3).slice(0, v.substring(3).lastIndexOf('_'));
+			if(document.getElementById("dtoc" + v).style.display == 'none') {
+				showToc(v);
+			}
+		} else { //一级或二级目录
+			updateColor(v);
+			if(document.getElementById('dtoc' + v.substring(3)) != null) {
+				showToc(v.substring(3));
+			}
+		}
+	}
+}
+
+//统计子串出现次数
+function subCount(str ,searchStr) {
+	if(str == null || str == "" || searchStr == null || searchStr == "") {
+		return 0;
+	}
+	var chars = str.split(searchStr);
+	return chars.length - 1;
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div style="margin-bottom:20;">
+
+<p class=Title><a href="anchor/main.html#Toc0" target="rightframe" id='Toc0' onclick=javascript:aClick(id)>目&nbsp;&nbsp;录</a></p>
+
+<p class=MsoToc1><a href="anchor/start.html#Toc1" target="rightframe" id="Toc1" onclick=javascript:aClick(id)>1&nbsp;&nbsp;快速入门</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/start.html#Toc1_1" target="rightframe" id="Toc1_1" onclick=javascript:aClick(id)>1.1&nbsp;&nbsp;ecms简介</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/start2.html#Toc1_2" target="rightframe" id="Toc1_2" onclick=javascript:aClick(id)>1.2&nbsp;&nbsp;创建第一个赛事！</a></p>
+
+<!-- 
+<p class=MsoToc1><a href="anchor/guide1.html#Toc2" target="rightframe" id="Toc2" onclick=javascript:aClick(id)>2&nbsp;&nbsp;系统使用主要流程</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide1.html#Toc2_1" target="rightframe" id="Toc2_1" onclick=javascript:aClick(id)>2.1&nbsp;&nbsp;典型角色操作流程</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide2.html#Toc2_2" target="rightframe" id="Toc2_2" onclick=javascript:aClick(id)>2.2&nbsp;&nbsp;如何管理项目工作？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide3.html#Toc2_3" target="rightframe" id="Toc2_3" onclick=javascript:aClick(id)>2.3&nbsp;&nbsp;如何管理代码和文档？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide4.html#Toc2_4" target="rightframe" id="Toc2_4" onclick=javascript:aClick(id)>2.4&nbsp;&nbsp;如何管理项目需求？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide5.html#Toc2_5" target="rightframe" id="Toc2_5" onclick=javascript:aClick(id)>2.5&nbsp;&nbsp;如何执行一次测试活动？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide6.html#Toc2_6" target="rightframe" id="Toc2_6" onclick=javascript:aClick(id)>2.6&nbsp;&nbsp;如何管理项目缺陷？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide7.html#Toc2_7" target="rightframe" id="Toc2_7" onclick=javascript:aClick(id)>2.7&nbsp;&nbsp;如何管理组织资料？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide8.html#Toc2_8" target="rightframe" id="Toc2_8" onclick=javascript:aClick(id)>2.8&nbsp;&nbsp;如何创建定期报告？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide9.html#Toc2_9" target="rightframe" id="Toc2_9" onclick=javascript:aClick(id)>2.9&nbsp;&nbsp;如何管理一份合同？</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/guide10.html#Toc2_10" target="rightframe" id="Toc2_10" onclick=javascript:aClick(id)>2.10&nbsp;&nbsp;如何执行绩效考核？</a></p>
+
+<p class=MsoToc1><a href="anchor/admin1.html#Toc3" target="rightframe" id="Toc3" onclick=javascript:aClick(id)>3&nbsp;&nbsp;后台管理</a></p>
+
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/admin1.html#Toc3_1" target="rightframe" id="Toc3_1" onclick=javascript:aClick(id)>3.1&nbsp;&nbsp;后台登录</a></p>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_2')" id="atoc3_2" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin2.html#Toc3_2" target="rightframe" id="Toc3_2" onclick=javascript:aClick(id)>3.2&nbsp;&nbsp;单位管理</a></p>
+<div id="dtoc3_2" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin2.html#Toc3_2_1" target="rightframe" id="Toc3_2_1" onclick=javascript:aClick(id)>3.2.1&nbsp;&nbsp;单位基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin2.html#Toc3_2_2" target="rightframe" id="Toc3_2_2" onclick=javascript:aClick(id)>3.2.2&nbsp;&nbsp;单位序列调整</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin2.html#Toc3_2_3" target="rightframe" id="Toc3_2_3" onclick=javascript:aClick(id)>3.2.3&nbsp;&nbsp;搜索</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_3')" id="atoc3_3" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin3.html#Toc3_3" target="rightframe" id="Toc3_3" onclick=javascript:aClick(id)>3.3&nbsp;&nbsp;岗位管理</a></p>
+<div id="dtoc3_3" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin3.html#Toc3_3_1" target="rightframe" id="Toc3_3_1" onclick=javascript:aClick(id)>3.3.1&nbsp;&nbsp;岗位基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin3.html#Toc3_3_2" target="rightframe" id="Toc3_3_2" onclick=javascript:aClick(id)>3.3.2&nbsp;&nbsp;复制岗位</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin3.html#Toc3_3_3" target="rightframe" id="Toc3_3_3" onclick=javascript:aClick(id)>3.3.3&nbsp;&nbsp;移动岗位</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin3.html#Toc3_3_4" target="rightframe" id="Toc3_3_4" onclick=javascript:aClick(id)>3.3.4&nbsp;&nbsp;搜索</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_4')" id="atoc3_4" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin4.html#Toc3_4" target="rightframe" id="Toc3_4" onclick=javascript:aClick(id)>3.4&nbsp;&nbsp;人员管理</a></p>
+<div id="dtoc3_4" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin4.html#Toc3_4_1" target="rightframe" id="Toc3_4_1" onclick=javascript:aClick(id)>3.4.1&nbsp;&nbsp;人员基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin4.html#Toc3_4_2" target="rightframe" id="Toc3_4_2" onclick=javascript:aClick(id)>3.4.2&nbsp;&nbsp;授权</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin4.html#Toc3_4_3" target="rightframe" id="Toc3_4_3" onclick=javascript:aClick(id)>3.4.3&nbsp;&nbsp;人员序列调整</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin4.html#Toc3_4_4" target="rightframe" id="Toc3_4_4" onclick=javascript:aClick(id)>3.4.4&nbsp;&nbsp;拖拽人员</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin4.html#Toc3_4_5" target="rightframe" id="Toc3_4_5" onclick=javascript:aClick(id)>3.4.5&nbsp;&nbsp;搜索</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin4.html#Toc3_4_6" target="rightframe" id="Toc3_4_6" onclick=javascript:aClick(id)>3.4.6&nbsp;&nbsp;设置工分</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_5')" id="atoc3_5" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin5.html#Toc3_5" target="rightframe" id="Toc3_5" onclick=javascript:aClick(id)>3.5&nbsp;&nbsp;角色管理</a></p>
+<div id="dtoc3_5" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin5.html#Toc3_5_1" target="rightframe" id="Toc3_5_1" onclick=javascript:aClick(id)>3.5.1&nbsp;&nbsp;角色基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin5.html#Toc3_5_2" target="rightframe" id="Toc3_5_2" onclick=javascript:aClick(id)>3.5.2&nbsp;&nbsp;角色权限</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_6')" id="atoc3_6" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin6.html#Toc3_6" target="rightframe" id="Toc3_6" onclick=javascript:aClick(id)>3.6&nbsp;&nbsp;标准维护</a></p>
+<div id="dtoc3_6" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin6.html#Toc3_6_1" target="rightframe" id="Toc3_6_1" onclick=javascript:aClick(id)>3.6.1&nbsp;&nbsp;标准信息维护</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin6.html#Toc3_6_2" target="rightframe" id="Toc3_6_2" onclick=javascript:aClick(id)>3.6.2&nbsp;&nbsp;缺陷状态维护</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_7')" id="atoc3_7" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin7.html#Toc3_7" target="rightframe" id='Toc3_7' onclick=javascript:aClick(id)>3.7&nbsp;&nbsp;日志管理</a></p>
+<div id="dtoc3_7" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin7.html#Toc3_7_1" target="rightframe" id="Toc3_7_1" onclick=javascript:aClick(id)>3.7.1&nbsp;&nbsp;日志基本信息管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin7.html#Toc3_7_2" target="rightframe" id="Toc3_7_2" onclick=javascript:aClick(id)>3.7.2&nbsp;&nbsp;搜索</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin7.html#Toc3_7_3" target="rightframe" id="Toc3_7_3" onclick=javascript:aClick(id)>3.7.3&nbsp;&nbsp;显示全部信息</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_8')" id="atoc3_8" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin8.html#Toc3_8" target="rightframe" id='Toc3_8' onclick=javascript:aClick(id)>3.8&nbsp;&nbsp;外部邮箱设置</a></p>
+<div id="dtoc3_8" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin8.html#Toc3_8_1" target="rightframe" id="Toc3_8_1" onclick=javascript:aClick(id)>3.8.1&nbsp;&nbsp;邮件发送设置</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin8.html#Toc3_8_2" target="rightframe" id="Toc3_8_2" onclick=javascript:aClick(id)>3.8.2&nbsp;&nbsp;邮件发送的事件</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin8.html#Toc3_8_3" target="rightframe" id="Toc3_8_3" onclick=javascript:aClick(id)>3.8.3&nbsp;&nbsp;发送失败的处理</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('3_9')" id="atoc3_9" style="visibility:visible">+</a>&nbsp;<a href="anchor/admin9.html#Toc3_9" target="rightframe" id="Toc3_9" onclick=javascript:aClick(id)>3.9&nbsp;&nbsp;回收箱</a></p>
+<div id="dtoc3_9" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin9.html#Toc3_9_1" target="rightframe" id="Toc3_9_1" onclick=javascript:aClick(id)>3.9.1&nbsp;&nbsp;人员恢复</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin9.html#Toc3_9_2" target="rightframe" id="Toc3_9_2" onclick=javascript:aClick(id)>3.9.2&nbsp;&nbsp;单位恢复</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/admin9.html#Toc3_9_3" target="rightframe" id="Toc3_9_3" onclick=javascript:aClick(id)>3.9.3&nbsp;&nbsp;项目恢复</a></p>
+</div>
+
+<p class=MsoToc1><a href="anchor/front.html#Toc4" target="rightframe" id='Toc4' onclick=javascript:aClick(id)>4&nbsp;&nbsp;前台业务处理</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/front.html#Toc4_1" target="rightframe" id='Toc4_1' onclick=javascript:aClick(id)>4.1&nbsp;&nbsp;前台登录</a></p>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_2')" id="atoc4_2" style="visibility:visible">+</a>&nbsp;<a href="anchor/project.html#Toc4_2" target="rightframe" id='Toc4_2' onclick=javascript:aClick(id)>4.2&nbsp;&nbsp;项目管理</a></p>
+<div id="dtoc4_2" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/project.html#Toc4_2_1" target="rightframe" id="Toc4_2_1" onclick=javascript:aClick(id)>4.2.1&nbsp;&nbsp;项目列表</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/module.html#Toc4_2_2" target="rightframe" id="Toc4_2_2" onclick=javascript:aClick(id)>4.2.2&nbsp;&nbsp;产品规划</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/event.html#Toc4_2_3" target="rightframe" id="Toc4_2_3" onclick=javascript:aClick(id)>4.2.3&nbsp;&nbsp;大事记</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/plan.html#Toc4_2_4" target="rightframe" id="Toc4_2_4" onclick=javascript:aClick(id)>4.2.4&nbsp;&nbsp;项目计划</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/task.html#Toc4_2_5" target="rightframe" id="Toc4_2_5" onclick=javascript:aClick(id)>4.2.5&nbsp;&nbsp;工作任务</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/formatdoc.html#Toc4_2_6" target="rightframe" id="Toc4_2_6" onclick=javascript:aClick(id)>4.2.6&nbsp;&nbsp;需求管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/svn.html#Toc4_2_7" target="rightframe" id="Toc4_2_7" onclick=javascript:aClick(id)>4.2.7&nbsp;&nbsp;配置管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/ticket.html#Toc4_2_8" target="rightframe" id="Toc4_2_8" onclick=javascript:aClick(id)>4.2.8&nbsp;&nbsp;缺陷管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/test.html#Toc4_2_9" target="rightframe" id="Toc4_2_9" onclick=javascript:aClick(id)>4.2.9&nbsp;&nbsp;测试管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/brief.html#Toc4_2_10" target="rightframe" id="Toc4_2_10" onclick=javascript:aClick(id)>4.2.10&nbsp;&nbsp;项目简报</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/file.html#Toc4_2_11" target="rightframe" id="Toc4_2_11" onclick=javascript:aClick(id)>4.2.11&nbsp;&nbsp;附件管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/reportview.html#Toc4_2_12" target="rightframe" id="Toc4_2_12" onclick=javascript:aClick(id)>4.2.12&nbsp;&nbsp;查看定期报告</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/bbs.html#Toc4_2_13" target="rightframe" id="Toc4_2_13" onclick=javascript:aClick(id)>4.2.13&nbsp;&nbsp;论坛</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/auth.html#Toc4_2_14" target="rightframe" id="Toc4_2_14" onclick=javascript:aClick(id)>4.2.14&nbsp;&nbsp;项目权限</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_3')" id="atoc4_3" style="visibility:visible">+</a>&nbsp;<a href="anchor/mail.html#Toc4_3" target="rightframe" id='Toc4_3' onclick=javascript:aClick(id)>4.3&nbsp;&nbsp;信箱</a></p>
+<div id="dtoc4_3" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/mail.html#Toc4_3_1" target="rightframe" id="Toc4_3_1" onclick=javascript:aClick(id)>4.3.1&nbsp;&nbsp;消息基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/mail.html#Toc4_3_2" target="rightframe" id="Toc4_3_2" onclick=javascript:aClick(id)>4.3.2&nbsp;&nbsp;搜索消息</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/mail.html#Toc4_3_3" target="rightframe" id="Toc4_3_3" onclick=javascript:aClick(id)>4.3.3&nbsp;&nbsp;收藏夹</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_4')" id="atoc4_4" style="visibility:visible">+</a>&nbsp;<a href="anchor/mytask.html#Toc4_4" target="rightframe" id='Toc4_4' onclick=javascript:aClick(id)>4.4&nbsp;&nbsp;我的任务</a></p>
+<div id="dtoc4_4" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/mytask.html#Toc4_4_1" target="rightframe" id="Toc4_4_1" onclick=javascript:aClick(id)>4.4.1&nbsp;&nbsp;计划任务</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/mytask.html#Toc4_4_2" target="rightframe" id="Toc4_4_2" onclick=javascript:aClick(id)>4.4.2&nbsp;&nbsp;临时任务</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_5')" id="atoc4_5" style="visibility:visible">+</a>&nbsp;<a href="anchor/personal.html#Toc4_5" target="rightframe" id='Toc4_5' onclick=javascript:aClick(id)>4.5&nbsp;&nbsp;个人中心</a></p>
+<div id="dtoc4_5" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/personal.html#Toc4_5_1" target="rightframe" id="Toc4_5_1" onclick=javascript:aClick(id)>4.5.1&nbsp;&nbsp;工作情况</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/personal.html#Toc4_5_2" target="rightframe" id="Toc4_5_2" onclick=javascript:aClick(id)>4.5.2&nbsp;&nbsp;个人信息</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/personal.html#Toc4_5_3" target="rightframe" id="Toc4_5_3" onclick=javascript:aClick(id)>4.5.3&nbsp;&nbsp;软件下载</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_6')" id="atoc4_6" style="visibility:visible">+</a>&nbsp;<a href="anchor/management.html#Toc4_6" target="rightframe" id='Toc4_6' onclick=javascript:aClick(id)>4.6&nbsp;&nbsp;项目线监控</a></p>
+<div id="dtoc4_6" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/management.html#Toc4_6_1" target="rightframe" id="Toc4_6_1" onclick=javascript:aClick(id)>4.6.1&nbsp;&nbsp;项目线监控</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/management.html#Toc4_6_2" target="rightframe" id="Toc4_6_2" onclick=javascript:aClick(id)>4.6.2&nbsp;&nbsp;项目列表</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/management.html#Toc4_6_3" target="rightframe" id="Toc4_6_3" onclick=javascript:aClick(id)>4.6.3&nbsp;&nbsp;组织矩阵</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/management.html#Toc4_6_4" target="rightframe" id="Toc4_6_4" onclick=javascript:aClick(id)>4.6.4&nbsp;&nbsp;输出报告</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_7')" id="atoc4_7" style="visibility:visible">+</a>&nbsp;<a href="anchor/unit.html#Toc4_7" target="rightframe" id='Toc4_7' onclick=javascript:aClick(id)>4.7&nbsp;&nbsp;部门管理</a></p>
+<div id="dtoc4_7" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/unit.html#Toc4_7_1" target="rightframe" id="Toc4_7_1" onclick=javascript:aClick(id)>4.7.1&nbsp;&nbsp;部门人员</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/unit.html#Toc4_7_2" target="rightframe" id="Toc4_7_2" onclick=javascript:aClick(id)>4.7.2&nbsp;&nbsp;部门任务</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/unit.html#Toc4_7_3" target="rightframe" id="Toc4_7_3" onclick=javascript:aClick(id)>4.7.3&nbsp;&nbsp;人员安排</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_8')" id="atoc4_8" style="visibility:visible">+</a>&nbsp;<a href="anchor/recurring.html#Toc4_8" target="rightframe" id='Toc4_8' onclick=javascript:aClick(id)>4.8&nbsp;&nbsp;定期报告</a></p>
+<div id="dtoc4_8" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/recurring.html#Toc4_8_1" target="rightframe" id="Toc4_8_1" onclick=javascript:aClick(id)>4.8.1&nbsp;&nbsp;报告基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/recurring.html#Toc4_8_2" target="rightframe" id="Toc4_8_2" onclick=javascript:aClick(id)>4.8.2&nbsp;&nbsp;授权</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/recurring.html#Toc4_8_3" target="rightframe" id="Toc4_8_3" onclick=javascript:aClick(id)>4.8.3&nbsp;&nbsp;报告列基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/recurring.html#Toc4_8_4" target="rightframe" id="Toc4_8_4" onclick=javascript:aClick(id)>4.8.4&nbsp;&nbsp;生成报表</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/recurring.html#Toc4_8_5" target="rightframe" id="Toc4_8_5" onclick=javascript:aClick(id)>4.8.5&nbsp;&nbsp;立即生成任务</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_9')" id="atoc4_9" style="visibility:visible">+</a>&nbsp;<a href="anchor/performance.html#Toc4_9" target="rightframe" id='Toc4_9' onclick=javascript:aClick(id)>4.9&nbsp;&nbsp;绩效管理</a></p>
+<div id="dtoc4_9" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/performance.html#Toc4_9_1" target="rightframe" id="Toc4_9_1" onclick=javascript:aClick(id)>4.9.1&nbsp;&nbsp;管理问卷库</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/performance.html#Toc4_9_2" target="rightframe" id="Toc4_9_2" onclick=javascript:aClick(id)>4.9.2&nbsp;&nbsp;考核管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/performance.html#Toc4_9_3" target="rightframe" id="Toc4_9_3" onclick=javascript:aClick(id)>4.9.3&nbsp;&nbsp;述职或考核</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/performance.html#Toc4_9_4" target="rightframe" id="Toc4_9_4" onclick=javascript:aClick(id)>4.9.4&nbsp;&nbsp;结果查询</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/performance.html#Toc4_9_5" target="rightframe" id="Toc4_9_5" onclick=javascript:aClick(id)>4.9.5&nbsp;&nbsp;管理述职模板</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_10')" id="atoc4_10" style="visibility:visible">+</a>&nbsp;<a href="anchor/contract.html#Toc4_10" target="rightframe" id='Toc4_10' onclick=javascript:aClick(id)>4.10&nbsp;&nbsp;合同管理</a></p>
+<div id="dtoc4_10" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/contract.html#Toc4_10_1" target="rightframe" id="Toc4_10_1" onclick=javascript:aClick(id)>4.10.1&nbsp;&nbsp;客户/供应商管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/contract.html#Toc4_10_2" target="rightframe" id="Toc4_10_2" onclick=javascript:aClick(id)>4.10.2&nbsp;&nbsp;产品/服务管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/contract.html#Toc4_10_3" target="rightframe" id="Toc4_10_3" onclick=javascript:aClick(id)>4.10.3&nbsp;&nbsp;合同基本管理</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/contract.html#Toc4_10_4" target="rightframe" id="Toc4_10_4" onclick=javascript:aClick(id)>4.10.4&nbsp;&nbsp;财务管理</a></p>
+</div>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_11')" id="atoc4_11" style="visibility:visible">+</a>&nbsp;<a href="anchor/contractmonitor.html#Toc4_11" target="rightframe" id='Toc4_11' onclick=javascript:aClick(id)>4.11&nbsp;&nbsp;合同监控</a></p>
+<div id="dtoc4_11" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/contractmonitor.html#Toc4_11_1" target="rightframe" id="Toc4_11_1" onclick=javascript:aClick(id)>4.11.1&nbsp;&nbsp;合同进展监控</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/contractmonitor.html#Toc4_11_2" target="rightframe" id="Toc4_11_2" onclick=javascript:aClick(id)>4.11.2&nbsp;&nbsp;财务监控</a></p>
+</div>
+
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/system.html#Toc4_12" target="rightframe" id='Toc4_12' onclick=javascript:aClick(id)>4.12&nbsp;&nbsp;系统管理</a></p>
+
+<p class=MsoToc2><a onclick="javascript:showToc('4_13')" id="atoc4_13" style="visibility:visible">+</a>&nbsp;<a href="anchor/resource.html#Toc4_13" target="rightframe" id='Toc4_13' onclick=javascript:aClick(id)>4.13&nbsp;&nbsp;资源库</a></p>
+<div id="dtoc4_13" style="display:none">
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_1" target="rightframe" id="Toc4_13_1" onclick=javascript:aClick(id)>4.13.1&nbsp;&nbsp;系统概述</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_2" target="rightframe" id="Toc4_13_2" onclick=javascript:aClick(id)>4.13.2&nbsp;&nbsp;系统用户</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_3" target="rightframe" id="Toc4_13_3" onclick=javascript:aClick(id)>4.13.3&nbsp;&nbsp;概念</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_4" target="rightframe" id="Toc4_13_4" onclick=javascript:aClick(id)>4.13.4&nbsp;&nbsp;管理分类</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_5" target="rightframe" id="Toc4_13_5" onclick=javascript:aClick(id)>4.13.5&nbsp;&nbsp;资源授权</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_6" target="rightframe" id="Toc4_13_6" onclick=javascript:aClick(id)>4.13.6&nbsp;&nbsp;发布资源</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_7" target="rightframe" id="Toc4_13_7" onclick=javascript:aClick(id)>4.13.7&nbsp;&nbsp;关注资源</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_8" target="rightframe" id="Toc4_13_8" onclick=javascript:aClick(id)>4.13.8&nbsp;&nbsp;使用历史</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_9" target="rightframe" id="Toc4_13_9" onclick=javascript:aClick(id)>4.13.9&nbsp;&nbsp;订阅资源</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_10" target="rightframe" id="Toc4_13_10" onclick=javascript:aClick(id)>4.13.10&nbsp;&nbsp;资源中心</a></p>
+<p class=MsoToc3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="anchor/resource.html#Toc4_13_11" target="rightframe" id="Toc4_13_11" onclick=javascript:aClick(id)>4.13.11&nbsp;&nbsp;统计分析</a></p>
+</div>
+
+<p class=MsoToc1><a href="anchor/tray.html#Toc5" target="rightframe" id='Toc5' onclick=javascript:aClick(id)>5&nbsp;&nbsp;ecms系统托盘</a></p>
+
+<p class=MsoToc1><a href="anchor/requirement.html#Toc6" target="rightframe" id='Toc6' onclick=javascript:aClick(id)>6&nbsp;&nbsp;系统运行环境要求</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/requirement.html#Toc6_1" target="rightframe" id='Toc6_1' onclick=javascript:aClick(id)>6.1&nbsp;&nbsp;服务器端</a></p>
+<p class=MsoToc2><a style="visibility:hidden">+</a>&nbsp;<a href="anchor/requirement.html#Toc6_2" target="rightframe" id='Toc6_2' onclick=javascript:aClick(id)>6.2&nbsp;&nbsp;客户端</a></p>
+-->
+<p class=MsoToc1><a href="anchor/end.html#Toc7" target="rightframe" id='Toc7' onclick=javascript:aClick(id)>2&nbsp;&nbsp;福建骏华科技有限公司简介</a></p>
+ 
+</div>
+
+</body>
+
+</html>

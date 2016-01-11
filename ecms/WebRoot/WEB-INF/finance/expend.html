@@ -1,0 +1,80 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="expendInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		项目名称：&nbsp;&nbsp;<input id="nameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >新建</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+	</div>
+	<div id="state_${id}" style="width:90px;">
+		<div data-options="name:'1',iconCls:'icon-info'">启用</div>
+		<div data-options="name:'0',iconCls:'icon-warn'">禁用</div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="expendId"  id="expendId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdTitle">支出日期：</td>
+					<td class="tdContent">
+						<input type="text" name="expendDate" class="contentInput" id="expendDate" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">项目名称：</td>
+					<td class="tdContent">
+						<input type="text" name="expendName" class="contentInput" id="expendName" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">赛事：</td>
+					<td class="tdContent">
+						<input type="text" name="competition.competitionId" class="contentInput" id="competition" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">支出类型：</td>
+					<td class="tdContent">
+						<input type="text" name="expendType.expendTypeId" class="contentInput" id="expendType" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">收款人单位：</td>
+					<td class="tdContent">
+						<input type="text" name="expendCorporation" class="contentInput" id="expendCorporation" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">支出金额：</td>
+					<td class="tdContent">
+						<input type="text" name="fee" class="easyui-numberbox" data-options="precision:1,min:0" style="width: 250px" id="fee" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">经手人：</td>
+					<td class="tdContent">
+						<input type="text" name="handler" class="contentInput" id="handler" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent">
+						<textarea name="note" style="width: 250px;height: 100px"></textarea>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

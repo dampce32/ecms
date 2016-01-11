@@ -1,0 +1,33 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="modifyPwdInit" id="${id}">
+	<div data-options="region:'north',border:false">
+		<a id="saveBtn" href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">确定</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="editDialog_${id}">
+		     <form id="editForm_${id}">
+		     	<table border="0" cellpadding="0" cellspacing="0">
+		     		<tr>
+		     			<td class="tdFirstTitle">原密码：</td>
+		     			<td class="tdFirstContent">
+		     				<input type="password" name ="passwords" id="passwords" class="tdContent">
+		     			</td>
+		     		</tr>
+		     		<tr>
+		     			<td class="tdTitle">新密码：</td>
+		     			<td class="tdContent">
+		     				<input type="password" name="newTeacherPwd" id="newTeacherPwd" class="tdContent">
+		     			</td>
+		     		</tr>
+		     		<tr>
+		     			<td class="tdTitle">重新输入新密码：</td>
+		     			<td class="tdContent">
+		     				<input type="password" name="newTeacherPwd2" id="newTeacherPwd2" class="tdContent">
+		     			</td>
+		     		</tr>
+		     	</table>
+		     </form>  
+		</div>
+	</div>
+	
+	
+</div>

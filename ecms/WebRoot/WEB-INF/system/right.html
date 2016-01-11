@@ -1,0 +1,68 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="rightInit" id="${id}" rightId="${rightId}">
+	<div data-options="region:'west',border:false" style="width:180px;">
+            <ul id="rightTree_${id}"></ul>
+	</div>
+	
+	<div class="easyui-layout"  data-options="region:'center'">
+		<div data-options="region:'north',border:false" class="queryContent" id="queryContent_${id}">
+			权限编号：&nbsp;&nbsp;<input id="rightCodeSearch" type="text" size="12"/>&nbsp;&nbsp;&nbsp;
+			权限名称：&nbsp;&nbsp;<input id="rightNameSearch" type="text" size="12"/>&nbsp;&nbsp;&nbsp;
+			<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+		</div>
+		<div data-options="region:'center',border:false">
+			<div id="rightList_${id}" style="border-left: none"></div>
+		</div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" id="editForm_${id}" >
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">权限编号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="rightCode" id="rightCode" class="contentInput" />
+						<input type="hidden" name="parentRight.rightId" id="parentID" />
+						<input type="hidden" name="rightId" id="rightId" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">权限名称：</td>
+					<td class="tdContent">
+						<input type="text" name="rightName" id="rightName" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">权限Url：</td>
+					<td class="tdContent">
+						<input type="text" name="rightUrl" id="rightUrl" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">权限类型：</td>
+					<td class="tdContent">
+						<select id="kind" class="easyui-combobox" name="kind" class="contentInput" style="width: 250px" data-options="editable:false" >  
+						    <option value="1">Url权限</option>  
+						    <option value="2">界面按钮权限</option>  
+						    <option value="3">数据显示</option>  
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="state" class="easyui-combobox" name="state" class="contentInput" style="width: 250px" data-options="editable:false" >  
+						    <option value="true">启用</option>  
+						    <option value="false">关闭</option>  
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent">
+						<textarea name="note" style="width: 250px;height: 100px"></textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

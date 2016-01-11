@@ -1,0 +1,26 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="registMessageClientInit" id="${id}">
+	<div data-options="region:'north',border:false">
+		<a id="saveBtn_${id}" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ok'">注册</a>
+	</div>
+	<div data-options="region:'center',border:false" style="width: 100%;padding: 6px">
+	     <form id="editForm_${id}">
+	     	<table border="0" cellpadding="0" cellspacing="0">
+	     		<tr>
+	     			<td  class="tdFirstTitle">序列号：</td>
+	     			<td  class ="tdFirstContent">
+	     				<input type="text" name ="softwareSerialNo" id="softwareSerialNo" style="width: 200px" size="70">
+	     			</td>
+	     		</tr>
+	     		<tr style="height: 12px">
+	     			<td colspan="2"></td>
+	     		</tr>
+	     		<tr>
+	     			<td  class="tdTitle">秘钥：</td>
+	     			<td  class ="tdContent">
+	     				<input type="password" name="key" id="key" style="width: 200px">
+	     			</td>
+	     		</tr>
+	     	</table>
+	     </form>  
+	</div>
+</div>

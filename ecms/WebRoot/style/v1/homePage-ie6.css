@@ -1,0 +1,67 @@
+.csitsec {
+	padding-bottom: 20px;
+}
+.more{
+	margin-top:-30px
+}
+.csitbox {
+	padding: 10px 20px;
+	border-color: #e5e5e5 #dbdbdb #d2d2d2;
+	background: #eeeeee;;
+	overflow: auto;
+	z-index: 1;
+	border-radius: 5px;
+}
+.csitbox-row5 {
+	height: 271px;
+}
+.csitbox .title {
+	margin-top: 8px;
+	margin-bottom: 10px;
+}
+.csitbox .title * {
+	display: inline-block;
+}
+.csitbox .title .more .btn {
+	margin-top: 6px;
+	margin-right: 3px;
+	border-radius: 20px;
+	-webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	-moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	vertical-align: middle;
+	text-align: center;
+	height: 16px;
+	line-height: 16px;
+	font-size: 12px;
+}
+.csitbox .title .count {
+	padding: 5px;
+	margin-top: 6px;
+	margin-right: 3px;
+	border-radius: 20px;
+	color: rgb(70, 70, 184);
+	background: #bfddf3;
+	-webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	-moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+	vertical-align: middle;
+	text-align: center;
+	height: 16px;
+	line-height: 16px;
+	font-size: 14px;
+	font-weight: bolder;
+}
+.csit-img-marquee .slide img:hover {
+	border: 1px #0099ff solid;
+	-webkit-box-shadow: #0099ff 3px;
+	-moz-box-shadow: #0099ff 3px;
+	box-shadow: #0099ff 3px;
+}
+.csit-img-marquee .slide img {
+	width: 218px;
+	height: 153px;
+	border-radius: 5px;
+	border: 1px rgba(0,0,0,0.1) solid;
+	margin-bottom: 5px;
+}

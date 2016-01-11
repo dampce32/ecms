@@ -1,0 +1,159 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="systemConfigInit" id="${id}" rightId = "${rightId}">
+	<div region="center" id="systemConfigTabs_${id}" class="easyui-tabs" border="false">
+		<div id="companyConfig" title="公司信息配置">
+			<a href="javascript:void(0)" class="easyui-linkbutton" id="saveCompany_${id}" data-options="iconCls:'icon-save'" style="cursor: pointer;margin: 5px">保存</a>
+			<form id="companyConfigForm_${id}" method="post">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="tdFirstTitle">公司名称：</td>
+						<td class="tdFirstContent">
+							<input type="text" name="companyName" id="companyName" style="width: 300px;"/>
+						</td>
+						<td rowspan="3" colspan="2" style="padding: 10px 0px 0px 10px">	
+							<img src="#" style="width: 317px;height: 200px" id="companyPic"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">公司图片：</td>
+						<td class="tdContent">
+							<div id="uploadCompanyPicture" style="*margin:2px 0px 0px 5px;width: 250px" ></div>
+							<input type="hidden" name="picture.pictureId" id="companyPicId">
+							<span style="font-size: 12px">注：上传图片格式:*.jpg;*.gif;*.png</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">咨询电话：</td>
+						<td class="tdContent" colspan="3">
+							<textarea id="hotline" name="hotline" style="width: 300px;height: 120px"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">公司简介：</td>
+						<td class="tdContent" colspan="3">
+							<textarea id="companyProfiles" name="companyProfiles" class="ckeditor"></textarea>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="emailConfig" title="邮箱配置">
+			<a href="javascript:void(0)" class="easyui-linkbutton" id="saveEmail_${id}" data-options="iconCls:'icon-save'" style="cursor: pointer;margin: 5px">保存</a>
+			<div data-options="region:'center',border:false">
+		  		<form id="emailConfigForm_${id}" method="post">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">发送邮件服务器：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="emailHost" id="emailHost" class="contentInput"/>
+								如：126邮箱的发送邮件服务器：smtp.126.com
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">系统邮箱：</td>
+							<td class="tdContent">
+								<input type="text" name="emailCode" id="emailCode" class="contentInput"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">系统邮箱密码：</td>
+							<td class="tdContent">
+								<input type="password" name="emailPwd" id="emailPwd" class="contentInput"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">系统注册邮件有效时间：</td>
+							<td class="tdContent">
+								<input type="text" name="registerEmailExpireTime" id="registerEmailExpireTime" class="easyui-numberbox" data-options="min:0" style="width: 250px"/>（分钟）
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">找回密码邮件有效时间：</td>
+							<td class="tdContent">
+								<input type="text" name="emailExpireTime" id="emailExpireTime" class="easyui-numberbox" data-options="min:0" style="width: 250px"/>（分钟）
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<div id="msgRegister" title="系统短信服务器注册">
+			<a id="msgRegisterBtn_${id}" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ok'">注册</a>
+			<div data-options="region:'center',border:false" style="width: 100%;padding: 6px">
+			     <form id="msgRegisterForm_${id}">
+			     	<table border="0" cellpadding="0" cellspacing="0">
+			     		<tr>
+			     			<td  class="tdFirstTitle">序列号：</td>
+			     			<td  class ="tdFirstContent">
+			     				<input type="text" name ="softwareSerialNo" id="softwareSerialNo" style="width: 200px" size="70">
+			     			</td>
+			     		</tr>
+			     		<tr style="height: 12px">
+			     			<td colspan="2"></td>
+			     		</tr>
+			     		<tr>
+			     			<td  class="tdTitle">秘钥：</td>
+			     			<td  class ="tdContent">
+			     				<input type="password" name="key" id="key" style="width: 200px">
+			     			</td>
+			     		</tr>
+			     	</table>
+			     </form>  
+			</div>
+		</div>
+		<div id="messageClientAccount" title="短信账户信息">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">序列号：</td>
+					<td class="tdFirstContent">
+						<span id="softwareSerialNo"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">剩余可发短信数：</td>
+					<td class="tdContent">
+						<span id="remainingCount"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">控制面板：</td>
+					<td class="tdContent">
+						<a href="javascript:void(0)" class="easyui-linkbutton" id="showHistory" data-options="iconCls:'icon-view'" style="cursor: pointer;">历史记录</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton" id="showFail" data-options="iconCls:'icon-view'" style="cursor: pointer;">错误记录</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="systemSwitch" title="系统开关">
+			<form id="systemSwitchForm_${id}" method="post" style="padding: 0px 10px 10px 10px">
+				<div style="margin-bottom: 10px">
+					&nbsp;短信总开关：<input type="checkbox" id="msgMainSwitch" style="margin: 0px 10px 8px 5px">
+					&nbsp;邮箱总开关：<input type="checkbox" id="mailMainSwitch" style="margin: 0px 10px 8px 5px">
+					<a href="javascript:void(0)" class="easyui-linkbutton" id="saveSystemSwitch_${id}" data-options="iconCls:'icon-save'" style="cursor: pointer;margin-top: 20px">保存</a>
+				</div>
+				<div id="subSwitchs_${id}" ></div>
+			</form>
+		</div>
+	</div>
+	
+	<div id="historyDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false"  class="queryContent">
+				起始日期：&nbsp;&nbsp;<input id="beginDate" type="text" class="queryInput" readonly="readonly" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+				终止日期：&nbsp;&nbsp;<input id="endDate" type="text" class="queryInput" readonly="readonly" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+				短信类型：&nbsp;&nbsp;<select id="messageType" style="width: 120px;" class="easyui-combobox" data-options="editable:false" >
+								<option value="">所有</option>				
+							 	<option value="2">注册验证</option>
+								<option value="3">报名通知</option>
+						   </select>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="searchHistoryMsg_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="historyList_${id}"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="failDialog_${id}">
+		<div id="failList_${id}"></div>
+	</div>
+</div>

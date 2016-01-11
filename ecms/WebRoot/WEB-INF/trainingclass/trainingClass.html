@@ -1,0 +1,122 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="trainingClassInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		班级名称：&nbsp;&nbsp;<input id="trainingClassNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		培训地点：&nbsp;&nbsp;<input id="addressSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		培训教材：&nbsp;&nbsp;<input name="goods.goodsId" id="goodsSearch" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		状态：&nbsp;&nbsp;<select id="statusSearch" class="easyui-combobox" class="queryInput" style="width: 50px" data-options="editable:false" >  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>
+						    <option value="">所有</option>  
+						</select>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >新建</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+		<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#state_${id}',plain:true,iconCls:'icon-state'" id="tbState_${id}">状态</a>
+	</div>
+		<div id="state_${id}" style="width:90px;">
+		<div data-options="name:'1',iconCls:'icon-info'">启用</div>
+		<div data-options="name:'0',iconCls:'icon-warn'">禁用</div>
+	</div>
+
+	
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="trainingClassId"  id="trainingClassId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">班级名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="trainingClassName" class="contentInput" id="trainingClassName" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课地点：</td>
+					<td class="tdContent">
+						<input type="text" name="address" class="contentInput" id="address" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">所属赛事：</td>
+					<td class="tdContent">
+						<input type="text" name="competitionGroup.competition.competitionId" class="contentInput" id="competition" data-options="editable:false" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">参赛组别：</td>
+					<td class="tdContent">
+						<input type="text" name="competitionGroup.competitionGroupId" class="contentInput" id="competitionGroup" data-options="editable:false"  />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">所用教材：</td>
+					<td class="tdContent">
+						<input type="text" name="goods.goodsId" class="easyui-combobox" id="goods"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">教材费用：</td>
+					<td class="tdContent">
+						<input type="text" class="easyui-numberbox" data-options="precision:1,min:0" style="width: 250px" id="goodsFee" name="goodsFee"/>
+						<span>元(单位：RMB)</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课时间：</td>
+					<td class="tdContent">
+						<input type="text" name="classDate" class="contentInput" id="classDate" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">任课老师：</td>
+					<td class="tdContent">
+						<input type="text" name="classTeacher" class="contentInput" id="classTeacher"/>
+					</td>
+				</tr>
+					<tr>
+					<td class="tdTitle">人数上限：</td>
+					<td class="tdContent">
+						<input type="text" name="limit" class="easyui-numberbox" data-options="precision:0,min:0" style="width: 250px" id="limit" />
+						<span>(单位：人)</span>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+					<tr>
+					<td class="tdTitle">培训费用：</td>
+					<td class="tdContent">
+						<input type="text" name="fee" class="easyui-numberbox" data-options="precision:1,min:0" style="width: 250px" id="fee" />
+						<span>元(单位：RMB)</span>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" class="easyui-combobox" name="status" style="width: 250px" data-options="editable:false" >  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>  
+						</select>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent">
+						<textarea name="note" style="width: 250px;height: 100px"></textarea>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

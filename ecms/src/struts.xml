@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<!-- 后缀 -->
+	<constant name="struts.action.extension" value="do" />
+	<package name="basePackage" extends="struts-default">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor-stack name="baseStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="baseStack"/>
+		
+		<global-results>
+			<result name="loginStu" type="redirect">/homePage.do</result>
+			<result name="loginTea" type="redirect">/login.html</result>
+			<result name="error">/error.html</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings> 
+	</package>
+	
+	<!--教师端的拦截器-->
+	<package name="teacherPackage" extends="basePackage">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor name="teacherLoginInterceptor" class="com.csit.filter.TeacherLoginVerifyInterceptor"/>
+			<interceptor-stack name="teacherStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="teacherLoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置默认拦截器栈 -->
+		<default-interceptor-ref name="teacherStack" />
+	</package>
+	
+	<!-- 学生端的拦截器 -->
+	<package name="studentPackage" extends="basePackage">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor name="studentLoginInterceptor" class="com.csit.filter.StudentLoginVerifyInterceptor"/>
+			<interceptor-stack name="studentStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="studentLoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置默认拦截器栈 -->
+		<default-interceptor-ref name="studentStack" />
+	</package>
+	
+	<!-- 学生教师端都用到的action的拦截器 -->
+	<package name="stuTeaPackage" extends="basePackage">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor name="stuTeaLoginInterceptor" class="com.csit.filter.StuTeaLoginVerifyInterceptor"/>
+			<interceptor-stack name="stuTeaStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="stuTeaLoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置默认拦截器栈 -->
+		<default-interceptor-ref name="stuTeaStack" />
+	</package>
+	
+	<package name="common" namespace="/common" extends="basePackage">
+		<action name="*Common" class="commonAction" method="{1}"></action>
+	</package>
+	
+	<!-- 个人信息管理-->
+	<package name="self" namespace="/self" extends="basePackage">
+		<action name="*">
+			<result>/WEB-INF/self/{1}.html</result>
+		</action>
+	</package>
+	<!-- 基础字典 -->
+	<package name="dict" namespace="/dict" extends="teacherPackage">
+		<action name="*Area" class="areaAction" method="{1}"></action>
+		<action name="*City" class="cityAction" method="{1}"></action>
+		<action name="*Province" class="provinceAction" method="{1}"></action>
+		<action name="*Nation" class="nationAction" method="{1}"></action>
+		<action name="*Prize" class="prizeAction" method="{1}"></action>
+		<action name="*Group" class="groupAction" method="{1}"></action>
+		<action name="*ExpendType" class="expendTypeAction" method="{1}"></action>
+		<action name="*PayType" class="payTypeAction" method="{1}"></action>
+		<action name="*School" class="schoolAction" method="{1}"></action>
+		<action name="*Grade" class="gradeAction" method="{1}"></action>
+		<action name="*Clazz" class="clazzAction" method="{1}"></action>
+		<action name="*SG" class="schoolGradeAction" method="{1}"></action>
+		<action name="*SGC" class="schoolGradeClazzAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/dict/{1}.html</result>
+		</action>
+	</package>
+	
+	<package name="main" namespace="/" extends="teacherPackage">
+		<action name="main">
+			<result>/WEB-INF/main.jsp</result>
+		</action>
+	</package>
+	
+	<package name="index" extends="basePackage" namespace="/">
+		<action name="indexTitle"  class="indexAction" method="indexTitle"></action>
+		<action name="validateLogin"  class="indexAction" method="validateLogin"></action>
+		<action name="homePage"  class="indexAction" method="homePage">
+			<result>/homePage.jsp</result>
+		</action>
+		<action name="competitionPhoto"  class="competitionPhotoAction" method="init">
+			<result>competitionPhoto.jsp</result>
+		</action>
+		<action name="competitionNotice"  class="informationAction" method="initNotice">
+			<result>competitionNotice.jsp</result>
+		</action>
+		<action name="trainingClass"  class="trainingClassStudentAction" method="initTrainingClass">
+			<result>trainingClass.jsp</result>
+		</action>
+		<action name="stadium"  class="stadiumStudentAction" method="initStadium">
+			<result>stadium.jsp</result>
+		</action>
+		<action name="competitionRule"  class="informationAction" method="initCompetitionRule">
+			<result>competitionRule.jsp</result>
+		</action>
+		<action name="noticeDetail"  class="informationAction" method="noticeDetail">
+			<result>noticeDetail.jsp</result>
+		</action>
+		<action name="initNextCompetitionStudent"  class="nextCompetitionStudentAction" method="init">
+			<result>nextCompetitionStudent.jsp</result>
+		</action>
+		<action name="initCompetitionPrizeStudent"  class="competitionPrizeStudentAction" method="init">
+			<result>competitionPrizeStudent.jsp</result>
+		</action>
+		<action name="getCompetitionPhoto"  class="competitionPhotoAction" method="getPhoto"></action>
+		<action name="initInformation" class="informationAction" method="init"></action>
+		<action name="saveStudentCompetitionGroup" class="studentCompetitionGroupAction" method="save"></action>
+		<action name="switchStatus" class="messageConfigAction" method="switchStatus"></action>
+		<action name="getRegisterSwitchStatuss" class="messageConfigAction" method="getRegisterSwitchStatuss"></action>
+		<action name="sendValidateCode" class="messageConfigAction" method="sendValidateCode"></action>
+		<action name="activeStu" class="validateInfoAction" method="activeStu">
+			<result name="success" type="redirectAction">homePage</result>
+			<result name="fail">/activeStuFail.jsp</result>
+		</action>
+		<action name="mobilePhoneSend" class="validateInfoAction" method="mobilePhoneSend"></action>
+		<action name="emailSend" class="validateInfoAction" method="emailSend"></action>
+		<action name="mobilePhoneConfirm" class="validateInfoAction" method="mobilePhoneConfirm"></action>
+		<action name="emailConfirm" class="validateInfoAction" method="emailConfirm"></action>
+		<action name="resetPwd" class="studentAction" method="resetPwd"></action>
+		<action name="getResetSwitchStatus" class="messageConfigAction" method="getResetSwitchStatus"></action>
+	</package>
+	
+	<!-- 登陆 -->
+	<package name="login" extends="basePackage" namespace="/login">
+		<action name="studentLogin" class="loginAction" method="studentLogin"></action>
+		<action name="teacherLogin" class="loginAction" method="teacherLogin"></action>
+		<action name="logout" class="studentAction" method="logout"></action>
+	</package>
+	<!-- 学生注册 -->
+	<package name="register" extends="basePackage" namespace="/register">
+		<action name="queryComboboxNation" class="nationAction" method="queryCombobox"></action>
+		<action name="queryComboboxProvince" class="provinceAction" method="queryCombobox"></action>
+		<action name="queryComboboxCity" class="cityAction" method="queryCombobox"></action>
+		<action name="queryComboboxArea" class="areaAction" method="queryCombobox"></action>
+		<action name="queryComboboxSchool" class="schoolAction" method="queryCombobox"></action>
+		<action name="queryComboboxSG" class="schoolGradeAction" method="queryCombobox"></action>
+		<action name="queryComboboxSGC" class="schoolGradeClazzAction" method="queryCombobox"></action>
+		<action name="saveStudent" class="studentAction" method="save"></action>
+	</package>
+	<!-- 系统管理 -->
+	<package name="system" namespace="/system" extends="teacherPackage">
+		<action name="*MsgBlackList" class="msgBlackListAction" method="{1}"></action>
+		<action name="*TeacherRole" class="teacherRoleAction" method="{1}"></action>
+		<action name="*Teacher" class="teacherAction" method="{1}"></action>
+		<action name="*RoleRight" class="roleRightAction" method="{1}"></action>
+		<action name="*Role" class="roleAction" method="{1}"></action>
+		<action name="*Right" class="rightAction" method="{1}"></action>
+		<action name="*SystemConfig" class="systemConfigAction" method="{1}"></action>
+		<action name="*MessageSend" class="messageSendAction" method="{1}"></action>
+		<action name="*MailsSender" class="mailsSenderAction" method="{1}"></action>
+		<action name="*MessageConfig" class="messageConfigAction" method="{1}"></action>
+ 		<action name="*">
+			<result>/WEB-INF/system/{1}.html</result>
+		</action>
+	</package>
+	
+	<!-- 试卷-->
+	<package name="paper" namespace="/paper" extends="teacherPackage">
+		<action name="*TempPaperBig" class="tempPaperBigAction" method="{1}"></action>
+		<action name="*TempPaperBigSmall" class="tempPaperBigSmallAction" method="{1}"></action>
+		<action name="*Paper" class="paperAction" method="{1}"></action>
+		<action name="examView">
+			<result>/WEB-INF/paper/examView.jsp</result>
+		</action>
+		<action name="*">
+			<result>/WEB-INF/paper/{1}.html</result>
+		</action>
+	</package>
+	
+	<!-- 学生端登录情况下可访问的 -->
+	<package name="student" namespace="/student" extends="studentPackage">
+		<action name="viewPaper" class="examAnswerAction" method="viewPaper">
+			<result>/student/viewPaper.jsp</result>
+		</action>
+		<action name="readyExam" class="examAnswerAction" method="readyExam">
+			<result>/student/readyExam.jsp</result>
+		</action>
+		<action name="exam" class="examAnswerAction" method="exam">
+			<result>/student/exam.jsp</result>
+		</action>
+		<action name="initExamPaper" class="examAnswerAction" method="initExamPaper"></action>
+		<action name="initSmall" class="examAnswerAction" method="initSmall"></action>
+		<action name="getSmallStatus" class="examAnswerAction" method="getSmallStatus"></action>
+		<action name="answerRead" class="examAnswerAction" method="answerRead"></action>
+		<action name="answerFill" class="examAnswerAction" method="answerFill"></action>
+		<action name="answerUniterm" class="examAnswerAction" method="answerUniterm"></action>
+		<action name="answerCloze" class="examAnswerAction" method="answerCloze"></action>
+		<action name="finishExamPaper" class="examAnswerAction" method="finishExamPaper"></action>
+		
+		<action name="myAnswer" class="answerAction" method="myAnswer">
+			<result>/WEB-INF/student/myAnswer.jsp</result>
+		</action>
+		<action name="*_html">
+			<result>/student/{1}.html</result>
+		</action>
+		<action name="*">
+			<result>/WEB-INF/student/{1}.jsp</result>
+		</action>
+		<action name="logout" class="studentAction" method="logout">
+		</action>
+		<action name="getStudentName" class="studentAction" method="getStudentName">
+			<result>/WEB-INF/student/mainStuTitle.jsp</result>
+		</action>
+		<action name="myAccount" class="studentCompetitionGroupAction" method="queryByStu">
+		</action>
+		<action name="getPictureStudent" class="studentAction" method="getPicture"></action>
+		<action name="uploadPictureStudent" class="studentAction" method="uploadPicture"></action>
+		<action name="initMyAccount" class="studentAction" method="init">
+			<result>/myAccount.jsp</result>
+		</action>
+		<action name="initEnrollStu" class="competitionGroupAction" method="initEnrollStu"></action>
+		<action name="toSaveTrainingClassStudent" class="trainingClassStudentAction" method="toSave">
+			<result>/trainingClassStudent.jsp</result>
+		</action>
+		<action name="initMyEnroll" class="studentCompetitionGroupAction" method="init">
+			<result>/myAccount.jsp</result>
+		</action>
+		<action name="initMyStadium" class="stadiumStudentAction" method="init">
+			<result>/myAccount.jsp</result>
+		</action>
+		<action name="initMyTrainingClass" class="trainingClassStudentAction" method="init">
+			<result>/myAccount.jsp</result>
+		</action>
+		<action name="saveTrainingClassStudent" class="trainingClassStudentAction" method="save"></action>
+		<action name="saveStadiumStudent" class="stadiumStudentAction" method="saveByStu"></action>
+		<action name="initExamAnswer" class="examAnswerAction" method="init">
+			<result>/myAccount.jsp</result>
+		</action>
+		<action name="saveStudent" class="studentAction" method="save"></action>
+		<action name="queryComboboxCity" class="cityAction" method="queryCombobox"></action>
+		<action name="queryComboboxArea" class="areaAction" method="queryCombobox"></action>
+		<action name="queryComboboxSchool" class="schoolAction" method="queryCombobox"></action>
+		<action name="queryComboboxSG" class="schoolGradeAction" method="queryCombobox"></action>
+		<action name="queryComboboxSGC" class="schoolGradeClazzAction" method="queryCombobox"></action>
+		<action name="newMobilePhoneSend" class="validateInfoAction" method="newMobilePhoneSend"></action>
+		<action name="newEmailSend" class="validateInfoAction" method="newEmailSend"></action>
+		<action name="newMobilePhoneConfirm" class="validateInfoAction" method="newMobilePhoneConfirm"></action>
+		<action name="newEmailConfirm" class="validateInfoAction" method="newEmailConfirm"></action>
+	</package>
+	
+	<!-- 试题&试卷-->
+	<package name="subject" namespace="/subject" extends="teacherPackage">
+		<action name="*Subject" class="subjectAction" method="{1}"></action>
+		<action name="*Teacher" class="teacherAction" method="{1}"></action>
+		<action name="*Dict" class="dataDictionaryAction" method="{1}"></action>
+		<action name="*SubjectSub" class="subjectSubAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/subject/{1}.html</result>
+		</action>
+	</package>
+	<!-- 赛事-->
+	<package name="competition" namespace="/competition" extends="teacherPackage">
+		<action name="*Competition" class="competitionAction" method="{1}"></action>
+		<action name="*CompetitionGroup" class="competitionGroupAction" method="{1}"></action>
+		<action name="*CompetitionPrize" class="competitionPrizeAction" method="{1}"></action>
+		<action name="*CompetitionPrizeStudent" class="competitionPrizeStudentAction" method="{1}"></action>
+		<action name="*NextCompetitionStudent" class="nextCompetitionStudentAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/competition/{1}.html</result>
+		</action>
+	</package>
+	<!-- 资讯管理-->
+	<package name="information" namespace="/information" extends="teacherPackage">
+		<action name="*Information" class="informationAction" method="{1}"></action>
+		<action name="*CompetitionPhoto" class="competitionPhotoAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/information/{1}.html</result>
+		</action>
+	</package>
+	<!-- 报名 -->
+	<package name="enroll" namespace="/enroll" extends="teacherPackage">
+		<action name="*Student" class="studentAction" method="{1}"></action>
+		<action name="*StudentCompetitionGroup" class="studentCompetitionGroupAction" method="{1}"></action>
+		<action name="*StudentFamilyMember" class="studentFamilyMemberAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/enroll/{1}.html</result>
+		</action>
+	</package>
+	<!-- 赛场-->
+	<package name="stadium" namespace="/stadium" extends="teacherPackage">
+		<action name="*Stadium" class="stadiumAction" method="{1}"></action>
+		<action name="*StadiumStudent" class="stadiumStudentAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/stadium/{1}.html</result>
+		</action>
+	</package>
+	<!-- 教材-->
+	<package name="goods" namespace="/goods" extends="teacherPackage">
+		<action name="*Goods" class="goodsAction" method="{1}"></action>
+		<action name="*Recrej" class="recrejAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/goods/{1}.html</result>
+		</action>
+	</package>
+	<!--培训-->
+	<package name="trainingClass" namespace="/trainingClass" extends="teacherPackage">
+		<action name="*TrainingClass" class="trainingClassAction" method="{1}"></action>
+		<action name="*TrainingClassStudent" class="trainingClassStudentAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/trainingclass/{1}.html</result>
+		</action>
+	</package>
+	<!--财务-->
+	<package name="finance" namespace="/finance" extends="teacherPackage">
+		<action name="*Expend" class="expendAction" method="{1}"></action>
+		<action name="*Pay" class="payAction" method="{1}"></action>
+		<action name="*StudentCompetitionGroup" class="studentCompetitionGroupAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/finance/{1}.html</result>
+		</action>
+	</package>
+	
+	<!--通讯管理-->
+	<package name="contacts" namespace="/contacts" extends="teacherPackage">
+		<action name="*Contacts" class="contactsAction" method="{1}"></action>
+		<action name="*MessageSend" class="messageSendAction" method="{1}"></action>
+		<action name="*MailsSender" class="mailsSenderAction" method="{1}"></action>
+		<action name="*MailsHistory" class="mailsHistoryAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/contacts/{1}.html</result>
+		</action>
+	</package>
+</struts>

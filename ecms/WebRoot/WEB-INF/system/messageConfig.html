@@ -1,0 +1,60 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="messageConfigInit" id="${id}" rightId = "${rightId}">
+	<div region="center" border="false">
+		<div class="easyui-tabs" data-options="fit:true" id="messageClientConfigTabs_${id}"  border="false">
+			<div id="messageClientAccount" title="帐户信息">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="tdFirstTitle">序列号：</td>
+						<td class="tdFirstContent">
+							<span id="softwareSerialNo"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">剩余可发短信数：</td>
+						<td class="tdContent">
+							<span id="remainingCount"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">控制面板：</td>
+						<td class="tdContent">
+							<a href="javascript:void(0)" class="easyui-linkbutton" id="showHistory" data-options="iconCls:'icon-view'" style="cursor: pointer;">历史记录</a>
+							<a href="javascript:void(0)" class="easyui-linkbutton" id="showFail" data-options="iconCls:'icon-view'" style="cursor: pointer;">错误记录</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="messageClientSwitch" title="短信开关">
+				<form id="messageClientSwitchForm_${id}" method="post" style="padding: 0px 10px 10px 10px">
+					<div style="margin-bottom: 10px">
+						&nbsp;短信总开关：<input type="checkbox" id="parentSwitch" style="margin: 0px 10px 8px 5px">
+						<a href="javascript:void(0)" class="easyui-linkbutton" id="save_${id}" data-options="iconCls:'icon-save'" style="cursor: pointer;margin-top: 20px">保存</a>
+					</div>
+					<div id="subSwitchs_${id}" ></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div id="historyDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false"  class="queryContent">
+				起始日期：&nbsp;&nbsp;<input id="beginDate" type="text" class="queryInput" readonly="readonly" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+				终止日期：&nbsp;&nbsp;<input id="endDate" type="text" class="queryInput" readonly="readonly" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+				短信类型：&nbsp;&nbsp;<select id="messageType" style="width: 120px;" class="easyui-combobox" data-options="editable:false" >
+								<option value="">所有</option>				
+							 	<option value="2">注册验证</option>
+								<option value="3">报名通知</option>
+						   </select>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="historyList_${id}"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="failDialog_${id}">
+		<div id="failList_${id}"></div>
+	</div>
+</div>

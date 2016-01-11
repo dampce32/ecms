@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="T_Information" schema="dbo" catalog="ECMS"
+		class="Information">
+	</table>
+	<table name="T_StudentCompetitionGroup" schema="dbo" catalog="ECMS"
+		class="StudentCompetitionGroup">
+	</table>
+	<table name="T_Student" schema="dbo" catalog="ECMS"
+		class="Student">
+	</table>
+	<table name="T_CompetitionGroup" schema="dbo" catalog="ECMS"
+		class="CompetitionGroup">
+	</table>
+	<table name="T_Area" schema="dbo" catalog="ECMS" class="Area"></table>
+	<table name="T_Nation" schema="dbo" catalog="ECMS" class="Nation"></table>
+	<table name="T_Picture" schema="dbo" catalog="ECMS"
+		class="Picture">
+	</table>
+	<table name="T_StudentFamilyMember" schema="dbo" catalog="ECMS"
+		class="StudentFamilyMember">
+	</table>
+	<table name="T_Exam_Answer" schema="dbo" catalog="ECMS"
+		class="ExamAnswer">
+	</table>
+	<table name="T_Exam_AnswerBig" schema="dbo" catalog="ECMS"
+		class="ExamAnswerBig">
+	</table>
+	<table name="T_Exam_AnswerBigSmall" schema="dbo" catalog="ECMS"
+		class="ExamAnswerBigSmall">
+	</table>
+	<table name="T_Exam_AnswerBigSmallSub" schema="dbo" catalog="ECMS"
+		class="ExamAnswerBigSmallSub">
+	</table>
+	<table name="T_CompetitionPhoto" schema="dbo" catalog="ECMS"
+		class="CompetitionPhoto">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_CometitionPrizeStudent" schema="dbo" catalog="ECMS"
+		class="CompetitionPrizeStudent">
+	</table>
+	<table name="T_NextCompetitionStudent" schema="dbo" catalog="ECMS"
+		class="NextCompetitionStudent">
+	</table>
+	<table name="T_MsgBackList" schema="dbo" catalog="ECMS" class="MsgBackList"></table>
+</hibernate-reverse-engineering>

@@ -1,0 +1,70 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="stadiumInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		赛场名称：&nbsp;&nbsp;<input id="nameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >新建</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+	</div>
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="stadiumId"  id="stadiumId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">赛场名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="stadiumName" class="contentInput" id="stadiumName" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">比赛地点：</td>
+					<td class="tdContent">
+						<input type="text" name="stadiumAddr" class="contentInput" id="stadiumAddr" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">所属赛事：</td>
+					<td class="tdContent">
+						<input type="text" name="competition" class="contentInput" id="competition" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">参赛组别：</td>
+					<td class="tdContent">
+						<input type="text" name="competitionGroup.competitionGroupId" class="contentInput" id="competitionGroup" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">比赛日期：</td>
+					<td class="tdContent">
+						<input type="text" name="competitionDate" class="Wdate contentInput" id="competitionDate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">人数上限：</td>
+					<td class="tdContent">
+						<input type="text" name="limit" class="contentInput" id="limit" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent">
+						<textarea name="note" style="width: 250px;height: 100px"></textarea>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="mailsSenderInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'center',border:false,title:'收件人'" style="width:100%;height:100%;">
+		<div id="list_${id}"></div>
+	</div>
+	<div data-options="region:'west',border:false,title:'邮件内容'" style="width:650px">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="mailsSenderId" id="mailsSenderId"/>
+			<input type="hidden" name="attachment" id="attachment"/>
+			<input type="hidden" name="receiveIDs" id="receiveIDs"/>
+	     	<input type="hidden" name="names" id="names"/>
+	     	<input type="hidden" name="emails" id="emails"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td style="width:80px;text-align:right;padding-top:5px;">标题：</td>
+					<td class="tdContent" style="width:570px">
+						<input type="text" name="title" id="title" class="contentInput" style="width:547px"/>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:80px;text-align:right;padding-top:5px;">附件：</td>
+					<td class="tdContent" style="width:570px">
+						<div id="uploadFile" style="*margin-top:2px;"></div>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:80px;text-align:right;padding-top:5px;">内容：</td>
+					<td class="tdContent"  style="width:570px">
+						<input type="text" name="content" id="content" class="ckeditor" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width:80px;text-align:right;padding-top:5px;"></td>
+					<td class="tdContent" style="padding-left: 20px;">
+						<input type="checkbox" name="timingCheckbox" id="timingCheckbox"/>
+						<span style="margin-left:5px;">定时</span>
+						<input type="text" name="sendTime" id="sendTime" class="Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'});"/>
+						<a href="javascript:void(0)" class="easyui-linkbutton" id="addBtn_${id}" style="cursor: pointer;margin-left:10px;">发 送</a>
+					</td>
+				</tr>
+			</table>
+    	</form>
+    </div>
+    <div id="editDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+				姓名：&nbsp;&nbsp;<input id="name" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				邮件地址：&nbsp;&nbsp;<input id="email" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="viewList_${id}"></div>
+			</div>
+		</div>
+	</div>
+    <div id="addDialog_${id}">
+		<div id="addList_${id}"></div>
+	</div>
+</div>

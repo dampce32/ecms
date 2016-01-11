@@ -1,0 +1,22 @@
+.hero-unit{
+	padding: 40px 20px 10px 30px;
+	background-color: #ffffff;
+}
+.pull-right {
+	*margin-top: -18px;
+}
+
+.unit{
+	background-color: #fff
+}
+
+.gallery { width:860px; height:250px; margin:0 auto; padding:0; }
+#slider { margin:0; padding:0; list-style:none; }
+#slider ul,
+#slider li { margin:0; padding:0; list-style:none; }
+#slider li { width:860px; height:250px; overflow:hidden; }
+p#controls { margin:0; padding:0; position:relative; }
+#prevBtn { display:block; margin:0; overflow:hidden; width:16px; height:26px; position:absolute; left:-40px; top:-150px; }
+#nextBtn { display:block; margin:0; overflow:hidden; width:16px; height:26px; position:absolute; left: 880px; top:-150px; }
+#prevBtn a { display:block; width:16px; height:26px; background:url(images/homePage/l_arrow.gif) no-repeat 0 0; }
+#nextBtn a { display:block; width:16px; height:26px; background:url(images/homePage/r_arrow.gif) no-repeat 0 0; }

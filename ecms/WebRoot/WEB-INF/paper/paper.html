@@ -1,0 +1,204 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="paperInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		参赛组别：&nbsp;&nbsp;<input id="groupSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		出题教师：&nbsp;&nbsp;<input id="teacherSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		状态：&nbsp;&nbsp;<select id="statusSearch" class="easyui-combobox" class="queryInput" style="width: 50px" data-options="editable:false" >  
+						    <option value="true">启用</option>  
+						    <option value="false">禁用</option>  
+						    <option value="">所有</option>
+						</select>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#m_add_${id}',plain:true,iconCls:'icon-add'" id="tbAdd_${id}">新建</a>   
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+		<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#state_${id}',plain:true,iconCls:'icon-state'" id="tbState_${id}">状态</a>   
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-view',plain:true" id="view_${id}" >查看试卷</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-view',plain:true" id="viewStu_${id}" >查看学生端试卷</a>  
+	</div>
+	
+	<div id="m_add_${id}" style="width:90px;">
+		<div data-options="name:'addNew',iconCls:'icon-add'">新建</div>
+		<div data-options="name:'addCopy',iconCls:'icon-copy'">复制新建</div>
+	</div>
+	<div id="state_${id}" style="width:90px;">
+		<div data-options="name:'true',iconCls:'icon-info'">启用</div>
+		<div data-options="name:'false',iconCls:'icon-warn'">禁用</div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" style="height: 100px;overflow: hidden;padding:5px">
+				<form method="post" name="editForm" id="editForm_${id}">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">试卷名称：</td>
+							<td class="tdFirstContent" colspan="3">
+								<input type="hidden" name="paperId"  id="paperId"/>
+								<input type="text" name="paperName"  id="paperName" style="width: 285px"/>
+								<span style="color:red">*</span>
+							</td>
+							<td class="tdFirstTitle">参赛组别：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="group.groupId"  id="group" style="width: 200px"/>
+								<span style="color:red">*</span>
+							</td>
+							<td class="tdTitle">答题类型：</td>
+							<td class="tdContent">
+								<input type="text" name="paperType"  id="paperType" style="width: 150px"/>
+								<span style="color:red">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">限时（分钟）：</td>
+							<td class="tdContent">
+								<input type="text" name="limits"  id="limits" style="width: 50px" class="easyui-numberbox" data-options="min:0,precision:0"/>
+								<span style="color:red">*</span>
+							</td>
+							
+							<td class="tdTitle">出卷老师：</td>
+							<td class="tdContent">
+								<input type="text"  id="publishTeacherName" style="width: 143px" readonly="readonly"/>
+							</td>
+							<td class="tdTitle">出卷时间：</td>
+							<td class="tdContent">
+								<input type="text" id="publishDate" name="publishDate" style="width: 200px" readonly="readonly"/>
+							</td>
+							<td class="tdTitle">总分：</td>
+							<td class="tdContent">
+								<input type="text" name="score"  id="score" style="width: 150px" readonly="readonly"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">大题打乱：</td>
+							<td class="tdContent">
+								<input type="checkbox" id="isBigMix" name="isBigMix">
+							</td>
+							
+							<td class="tdTitle">小题连续：</td>
+							<td class="tdContent">
+								<input type="checkbox" id="isSmallContinue" name="isSmallContinue">
+							</td>
+							<td class="tdTitle">备注：</td>
+							<td class="tdContent" colspan="3">
+								<input type="text" name="note"  id="note" style="width: 434px"/>
+							</td>
+						</tr>
+					</table>
+					<!-- 小题 -->
+	    			<input type="hidden" name="bigId" id="bigId">
+	    			<input type="hidden" name="smallIds" id="smallIds">
+	    			<input type="hidden" name="isOptionMixs" id="isOptionMixs">
+	    			<input type="hidden" name="scores" id="scores">
+	    			<input type="hidden" name="difficultys" id="difficultys">
+	    			<!-- 大题 -->
+	    			<input type="hidden" name="bigIds" id="bigIds">
+	    			<input type="hidden" name="subjectTypes" id="subjectTypes">
+	    			<input type="hidden" name="bigNames" id="bigNames">
+	    			<input type="hidden" name="isSmallMixs" id="isSmallMixs">
+	    			<input type="hidden" name="scoreBigs" id="scoreBigs">
+	    			
+	    			<input type="hidden" name="saveType" id="saveType">
+	    		</form>
+	    	</div>
+	    	<div data-options="region:'center'" style="width: 100%;height:100%">
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'center',border:false" style="border-left: 0px;border-top: 0px;border-bottom: 0px;">
+			    		<div id="paperBigList_${id}" data-options="border:false" ></div>
+			    	</div>
+			    	<div data-options="region:'east',split:true,border:false"  style="width: 400px;overflow: hidden;">
+			    		<div id="paperBigSmallList_${id}" data-options="border:false"></div>
+					</div>
+			    </div>
+			</div>
+	    </div>
+	</div>
+	
+	<div id="selectSubjectDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" class="queryContent"> 
+				出题老师:&nbsp;&nbsp;<input id="publishTeacherSelectSubjectDialog" type="text" size="12"/>&nbsp;&nbsp;&nbsp;
+				难度：&nbsp;&nbsp;<select id="difficultySearch" class="easyui-combobox" class="queryInput" style="width: 50px" data-options="editable:false" >  
+						    <option value="易">易</option>  
+						    <option value="中">中</option> 
+						    <option value="难">难</option>
+						    <option value="">所有</option>  
+						</select>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="searchSelectSubjectDialogBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="selectSubjectList_${id}"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="addMulBigSmallDialog_${id}">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="tdFirstTitle">题数：</td>
+				<td class="tdFirstContent">
+					<input type="text"  id="countSmall" class="contentInput easyui-numberbox"  data-options="min:0,precision:0"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdTitle">分值：</td>
+				<td class="tdContent">
+					<input type="text" id="scoreSmall" class="contentInput easyui-numberbox"  data-options="min:0,precision:1"/>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div id="viewDialog_${id}">
+	</div>
+	<!--查看学生端试卷-->
+	<div id="viewStuDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',title:'答题卡',split:true,border:false" style="width: 250px">
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'south'" style="height: 70px;border-bottom: none;border-left: none;border-right: none;font-size: 14px;padding: 10px">
+						<span style="font-weight: bold;">姓名：</span><span id="studentName_${id}"></span><br><br>
+						
+						<span style="font-weight: bold;">准考证号：</span><span id="examCode_${id}"></span>
+					</div>
+					<div data-options="region:'center',border:false">
+						<div id="subjectTable">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-options="region:'center',title:'答题区',border:false" >
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'north',border:false" class="paperInfo">
+						<span id="paperName_${id}"></span>
+					</div>
+					<div data-options="region:'center',border:false">
+						<div class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'north',border:false" class="bigInfo">
+								<div class="bigNameAnswer" id="bigName">
+								</div>
+							</div>
+							<div id="answerPanel" data-options="region:'center'">
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'south',split:true" class="examToolbar">
+						<div id="timeIndex">距考试结束时间还有：</div>
+						<div id="countdown_${id}" class="countdown"></div>
+						<div class="btnBar">
+							<a href="javascript:void(0)" class="easyui-linkbutton" id="exitExam_${id}" data-options="iconCls:'icon-cancel',plain:true" style="cursor: pointer;float: right">退出</a>
+							<a href="javascript:void(0)" class="easyui-linkbutton" id="okExam" data-options="iconCls:'icon-ok',plain:true" style="cursor: pointer;float: right">交卷</a>
+							<a href="javascript:void(0)" class="easyui-linkbutton" id="nextSmall" data-options="iconCls:'icon-down',plain:true"  style="cursor: pointer;float: right">下一题</a>
+							<a href="javascript:void(0)" class="easyui-linkbutton" id="upSmall" data-options="iconCls:'icon-up',plain:true" style="cursor: pointer;float: right">上一题</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

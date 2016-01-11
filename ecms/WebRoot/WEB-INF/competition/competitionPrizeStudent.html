@@ -1,0 +1,47 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="competitionPrizeStudentInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		赛事组别：&nbsp;&nbsp;<input id="competitionGroupSearch_${id}" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		赛事奖项：&nbsp;&nbsp;<input id="competitionPrizeSearch_${id}" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		学生姓名：&nbsp;&nbsp;<input id="studentNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >录入</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',border:false,split:true,title:'赛事组别'" style="width: 150px">
+				<div id="competitionGroupList_${id}" data-options="border:false"></div>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'west',border:false,split:true,title:'赛事奖项'" style="width: 150px">
+						<div id="competitionPrizeList_${id}"></div>
+					</div>
+					<div data-options="region:'center',border:false,title:'获奖名单'">
+						<div id="competitionPrizeStudentList_${id}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 选择赛事获奖学生名单 s-->
+	<div id="selectCompetitionGroupPrizeStudentDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" class="queryContent">
+				学生姓名：&nbsp;&nbsp;<input id="studentNameSelectCompetitionGroupPrizeStudentDialog" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="searchBtnSelectCompetitionGroupPrizeStudentDialog_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="selectCompetitionGroupPrizeStudentList_${id}"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 选择赛事获奖学生名单 e-->
+</div>

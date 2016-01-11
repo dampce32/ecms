@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+p a {
+	cursor:pointer;
+	color:#333;
+	text-decoration:none;
+}
+
+p a:hover {
+	text-decoration:underline;
+}
+
+p {
+	font-family:"微软雅黑";
+	font-size:9.0pt;
+	font-weight:bold;
+	height:20px;
+	margin-top:3px;
+}
+
+</style>
+
+<script>
+function downChange() {
+	var ref = document.getElementById('pagedown').href;
+	var v = ref.substring(ref.indexOf('#') + 1);
+	parent.getAToc(v);
+	parent.frames["leftframe"].clearColor();
+	parent.frames["leftframe"].changeColor(v);
+	parent.changeScroll(v);
+}
+</script>
+
+</head>
+
+<body style="height:30px">
+<div style="margin-top:-5px;width:74%;height:30px;position:absolute;left:13%;text-align:right;border-top:1px solid #777;">
+<p>
+	<a href="anchor/start.html#Toc1" target="rightframe" onclick="javascript:downChange();return false;" id="pagedown"><span style="color:#2299EB" id="down">下一节：1&nbsp;&nbsp;快速入门</span></a>
+</p>
+</div>
+</body>
+</html>

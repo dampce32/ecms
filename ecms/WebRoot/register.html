@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" >
+<html>
+  <head>
+    <title>用户注册</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" href="style/register.css" type="text/css"></link>
+    <link rel="stylesheet" href="style/v1/icon.css" type="text/css"></link>
+    <link rel="stylesheet" href="style/v1/easyui/easyui.css" type="text/css"></link>
+    
+    <script type="text/javascript" src="js/common/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/common/commons-ajaxclient.js"></script>
+	<script type="text/javascript" src="js/common/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/common/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="js/common/ecms.cache.js"></script>
+	<script type="text/javascript" src="js/register.js"></script>
+  </head>
+  
+  <body style="background-image:url('style/v1/images/register_bg.jpg');">
+	  <center>
+	  	<h1>用户注册</h1>
+		<div id="main">
+			<div class="title">个人信息</div>
+			<div class="content">
+				<form id="studentForm" method="post" enctype="multipart/form-data">
+					<input type="hidden" name = "familyMemberInfo" id="familyMemberInfo"/>
+					<input type="hidden" name="validateCode" id="validateCode"/>
+					<input type="hidden" name="kindSave" id="kindSave"/>
+					<table border="0">
+				    	<tr>
+				    		<td class="tdTitle">学生姓名：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="studentName" id="studentName" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">性别：</td>
+				    		<td class="tdContent">
+				    			<select name="sex" id="sex" class="easyui-combobox" data-options="editable:false" style="width:200px">
+				    				<option value="0">男</option>
+				    				<option value="1">女</option>
+				    			</select>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">出生日期：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="birthday" id="birthday" class="contentInput Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-{%d-1}'})"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">民族：</td>
+				    		<td>
+				    			<input type="text" name="nation.nationId" id="nation" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">家庭电话：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="phone" id="phone" style="width:200px"/>
+				    		</td>
+				    		<td class="tdTitle">身份证号：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="idNumber" id="idNumber" class="contentInput"/>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">手机号码：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="mobilePhone" id="mobilePhone" style="width:200px" class="easyui-numberbox" data-options="min:0"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">E-Mail：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="email" id="email" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">所在省份：</td>
+				    		<td class="tdContent" >
+				    			<input type="text" id="province"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">所在市：</td>
+				    		<td colspan="3">
+				    			<input type="text" id="city"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">所在区/县：</td>
+				    		<td class="tdContent" >
+				    			<input type="text" name="area.areaId" id="area"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">学校：</td>
+				    		<td lass="tdContent" >
+				    			<input type="text"  id="school" style="width:200px"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">年级：</td>
+				    		<td class="tdContent">
+				    			<input type="text" id="grade" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">班级：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="schoolGradeClazz.schoolGradeClazzId" id="clazz" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">家庭地址：</td>
+				    		<td colspan="3">
+				    			<input type="text" name="address" id="address" style="width:592px"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">登录名：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="userCode" id="userCode" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">照片：</td>
+				    		<td class="tdContent">
+				    			<input type="file" name="upload" id="upload" class="contentInput"/>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">密码：</td>
+				    		<td class="tdContent">
+				    			<input type="password"" name="userPwd" id="userPwd" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">确认密码：</td>
+				    		<td class="tdContent">
+				    			<input type="password" id="userPwd2" class="contentInput"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    </table>
+			    </form>
+			</div>
+		    <div class="title">
+			    <div style="float: left;">
+			    	家庭成员信息
+		    	</div>
+		    </div>
+		    <div id="studentFamilyMember" class="content">
+			    <table border="0">
+			    	<tr>
+			    		<td class="tdTitle">家庭成员：</td>
+			    		<td class="tdContent">
+			    			<input type="text" id="familyMember" class="contentInput"/>
+			    			<span style="color:red">*</span>
+			    		</td>
+			    		<td class="tdTitle">姓名：</td>
+			    		<td class="tdContent">
+			    			<input type="text" id="familyMemberName" class="contentInput"/>
+			    			<span style="color:red">*</span>
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<td class="tdTitle">年龄：</td>
+			    		<td class="tdContent">
+			    			<input type="text" id="familyMemberAge" class="easyui-numberbox contentInput" data-options="min:0"/>
+			    		</td>
+			    		<td class="tdTitle">单位及职务：</td>
+			    		<td class="tdContent">
+			    			<input type="text" id="workUnitsAndPosition" class="contentInput"/>
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<td class="tdTitle">联系电话：</td>
+			    		<td class="tdContent">
+			    			<input type="text" name="phone" id="phone" class="contentInput"/>
+			    			<span style="color:red">*</span>
+			    		</td>
+			    		<td class="tdTitle">E-Mail：</td>
+			    		<td class="tdContent">
+			    			<input type="text" name="email" id="email" class="contentInput"/>
+			    		</td>
+			    	</tr>
+			    </table>
+			    <a href="#" class="easyui-linkbutton" id="registerFreeBtn"  data-options="iconCls:'icon-save'" style="cursor: pointer;">注册</a>
+			</div>
+			<div class="title" id="validateTitle">
+			    <div style="float: left;">
+			    	验证
+		    	</div>
+		    </div>
+		    <div region="center" id="validateTabs" class="easyui-tabs" border="false">
+				<div id="mobileTab" title="手机验证">
+					    <table border="0">
+					    	<tr>
+					    		<td class="tdTitle">短信验证码：</td>
+					    		<td class="tdContent">
+					    			<input type="text" id="validateCodeInput" class="contentInput"/>
+					    			<span style="color:red">*</span>
+					    			<a href="javaScript:void(0)" class="easyui-linkbutton" id="toValidate" style="cursor: pointer;">点击获取验证码</a>
+									<a href="#" class="easyui-linkbutton" id="registerMobile" data-options="iconCls:'icon-mobile'"  style="cursor: pointer;">手机注册</a>
+					    		</td>
+					    	</tr>
+					    </table>
+				</div>
+				<div id="emailTab" title="邮箱验证">	
+					<table border="0">
+				    	<tr>
+				    		<td class="tdTitle">验证码：</td>
+				    		<td class="tdContent">
+								<input type="text" id="emailCaptcha" name="j_captcha"  class="contentInput" style="text-transform: uppercase;" />
+								<span style="color:red">*</span>
+								<img id="loginCaptchaImage"  src="captcha.jpg" alt="换一张" style="cursor: pointer;vertical-align: middle;"/>
+				    			<a href="#" class="easyui-linkbutton" id="registerEmail"  data-options="iconCls:'icon-email'" style="cursor: pointer;">邮箱注册</a>
+				    		</td>
+				    	</tr>
+					</table>
+				</div>
+			</div>
+	    </div>
+	  </center>
+  </body>
+</html>

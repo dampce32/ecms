@@ -1,0 +1,76 @@
+/**
+ * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.html or http://ckeditor.com/license
+ */
+
+CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here. For example:
+	// config.language = 'fr';
+	// config.uiColor = '#AADC6E';
+	config.toolbar_Full =
+	[
+	    { name: 'document', items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
+	    { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+	    { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
+	    { name: 'forms', items : [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 
+	        'HiddenField' ] },
+	    '/',
+	    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+	    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv',
+	    '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
+	    { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+	    { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
+	    '/',
+	    { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+	    { name: 'colors', items : [ 'TextColor','BGColor' ] },
+	    { name: 'tools', items : [ 'Maximize', 'ShowBlocks','-','About' ] }
+	];
+	
+	 config.toolbar_Simple = [
+        {name: 'document',items: ['Source', '-', 'DocProps', 'Preview', 'Print', '-']},
+        {name: 'clipboard',items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+        {name: 'editing',items: ['Find', 'Replace', '-', 'SelectAll', '-']},
+        { name: 'basicstyles',items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+        '/',
+        {name: 'paragraph',items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-','-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']},
+        {name: 'links',items: ['Link', 'Unlink', 'Anchor']},
+        {name: 'insert',items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak']},
+        '/',
+        { name: 'styles',items: ['Styles', 'Format', 'Font', 'FontSize']},
+        { name: 'colors',items: ['TextColor', 'BGColor']},
+        { name: 'tools',items: [ 'Maximize','ShowBlocks']}
+    ];
+	 
+	 config.toolbar_Text =
+			[
+			    { name: 'document', items : [ 'Preview','Print', 'Paste','PasteText','PasteFromWord','Undo','Redo','SpellChecker' ] },
+			    { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','SpecialChar'] },
+			    { name: 'links', items : [ 'Link','Unlink'] },
+			    '/',
+			    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+			    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent',
+			    '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'] },
+			    '/',
+			    { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+			    { name: 'colors', items : [ 'TextColor','BGColor','Maximize'] }
+			];
+	 
+	 
+	 config.toolbar_Paper =
+			[
+			    { name: 'document', items : ['Preview','Print','SpellChecker', 'Scayt','Maximize'] },
+			    { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+			    { name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','SpecialChar','Link','Unlink'] },
+			    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+			    '/',
+			    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-',
+			    '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'] },
+			    { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+			    { name: 'colors', items : [ 'TextColor','BGColor' ] }
+			];
+	 
+	config.toolbar_Simple = [['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink', '-', 'About']];
+
+	config.toolbar = 'Basic';
+	config.width = '100%';
+};

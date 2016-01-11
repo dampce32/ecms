@@ -1,0 +1,205 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="studentInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		登录名：&nbsp;&nbsp;<input id="codeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		姓名：&nbsp;&nbsp;<input id="nameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		状态：&nbsp;&nbsp;<select id="statusSearch" class="easyui-combobox" class="queryInput" style="width: 50px" data-options="editable:false" >  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>  
+						</select>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >新建</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+		<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#state_${id}',plain:true,iconCls:'icon-state'" id="tbState_${id}">状态</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-redo',plain:true" id="picture_${id}">导入照片</a>
+	</div>
+	<div id="state_${id}" style="width:90px;">
+		<div data-options="name:'1',iconCls:'icon-info'">启用</div>
+		<div data-options="name:'0',iconCls:'icon-warn'">禁用</div>
+	</div>
+	<div id="editDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'center',border:false"> 
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'center',border:false" > 
+						<form method="post" name="editForm" id="editForm_${id}">
+							<input type="hidden" name = "familyMemberInfo" id="familyMemberInfo"/>
+							<input type="hidden" name="studentId" id="studentId"/>
+							<input type="hidden" name="kindSave" id="kindSave"/>
+							<table border="0" cellpadding="0" cellspacing="0" style="width:650px">
+								<tr>
+						    		<td class="tdFirstTitle">学生姓名：</td>
+						    		<td class="tdFirstContent">
+						    			<input type="text" name="studentName" id="studentName" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    		<td class="tdTitle">民族：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="nation.nationId" id="nation" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">出生日期：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="birthday" id="birthday" class="contentInput2 Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    		<td class="tdTitle">性别：</td>
+						    		<td class="tdContent">
+						    			<select name="sex" id="sex" class="easyui-combobox" data-options="editable:false" style="width:200px">
+						    				<option value="0">男</option>
+						    				<option value="1">女</option>
+						    			</select>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">家庭电话：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="phone" id="phone" style="width:200px" class="easyui-numberbox" data-options="min:0"/>
+						    		</td>
+						    		<td class="tdTitle">身份证号：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="idNumber" id="idNumber" class="contentInput2"/>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">手机号码：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="mobilePhone" id="mobilePhone" style="width:200px" class="easyui-numberbox" data-options="min:0"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    		<td class="tdTitle">E-Mail：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="email" id="email" class="contentInput2"/>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">所在省份：</td>
+						    		<td class="tdContent" >
+						    			<input type="text" id="province" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    		<td class="tdTitle">所在市：</td>
+						    		<td colspan="3">
+						    			<input type="text" id="city" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">所在区/县：</td>
+						    		<td class="tdContent" >
+						    			<input type="text" name="area.areaId" id="area" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    		<td class="tdTitle">学校：</td>
+						    		<td lass="tdContent" >
+						    			<input type="text"  id="school" style="width:200px" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">年级：</td>
+						    		<td class="tdContent">
+						    			<input type="text" id="grade" class="contentInput2" />
+						    			<span style="color:red">*</span>
+						    		</td>
+						    		<td class="tdTitle">班级：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="schoolGradeClazz.schoolGradeClazzId" id="clazz" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">家庭地址：</td>
+						    		<td class="tdContent" colspan="3">
+						    			<input type="text" name="address" id="address" style="width:525px"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    	</tr>
+						    	<tr>
+						    		<td class="tdTitle">登录名：</td>
+						    		<td class="tdContent">
+						    			<input type="text" name="userCode" id="userCode" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    		<td class="tdTitle">密码：</td>
+						    		<td class="tdContent">
+						    			<input type="password"" name="userPwd" id="userPwd" class="contentInput2"/>
+						    			<span style="color:red">*</span>
+						    		</td>
+						    	</tr>
+							</table>
+				    	</form>
+				    </div>
+					<div data-options="region:'east'"  style="width: 185px;border: 0px">
+						<div style="padding: 10px 0px 0px 0px">
+							<img alt="照片" src="" id="picture" style="width: 180px;height: 215px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-options="region:'south',border:false" style="height:120px">
+				<form id="familyForm">
+					<table border="0" cellpadding="0" cellspacing="0" style="width:650px">
+				    	<tr>
+				    		<td class="tdTitle">家庭成员：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="familyMember" id="familyMember" class="contentInput2"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">姓名：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="familyMemberName" id="familyMemberName" class="contentInput2"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">年龄：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="familyMemberAge" id="familyMemberAge" style="width: 200px" class="easyui-numberbox" data-options="min:0"/>
+				    		</td>
+				    		<td class="tdTitle">工作单位及职务：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="workUnitsAndPosition" id="workUnitsAndPosition" class="contentInput2"/>
+				    		</td>
+				    	</tr>
+				    	<tr>
+				    		<td class="tdTitle">联系电话：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="phone" id="phone" style="width:200px" class="easyui-numberbox" data-options="min:0"/>
+				    			<span style="color:red">*</span>
+				    		</td>
+				    		<td class="tdTitle">E-Mail：</td>
+				    		<td class="tdContent">
+				    			<input type="text" name="email" id="email" class="contentInput2"/>
+				    		</td>
+				    	</tr>
+				    </table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="photoDialog_${id}">
+		<form id="photoForm_${id}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="studentId" id="studentId"/>
+			<input type="hidden" name="userCode" id="userCode"/>
+			<input type="hidden" name="picture.pictureId" id="pictureId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">照片：</td>
+    				<td class="tdFirstContent">
+    					<input type="file" name="upload" id="upload" class="contentInput"/>
+    				</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

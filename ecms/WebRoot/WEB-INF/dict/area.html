@@ -1,0 +1,56 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="areaInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		省份名称：&nbsp;&nbsp;<input id="provinceSearch"  class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		城市名称：&nbsp;&nbsp;<input id="citySearch"  class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		区县编号：&nbsp;&nbsp;<input name="areaCode" id="areaCodeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		区县名称：&nbsp;&nbsp;<input name="areaName" id="areaNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >新建</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true" id="moveUp_${id}" >上移</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true" id="moveDown_${id}" >下移</a> 
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="areaId"  id="areaId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdTitle">省份名称：</td>
+					<td class="tdContent">
+						<input id="province" class="easyui-combobox" name="province.provinceId" style="width: 250px" data-options="editable:false" >  
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">城市名称：</td>
+					<td class="tdContent">
+						<input id="city" class="easyui-combobox" name="city.cityId" style="width: 250px" data-options="editable:false" >  
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdFirstTitle">区县编号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="areaCode" class="contentInput" id="areaCode" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">区县名称：</td>
+					<td class="tdContent">
+						<input type="text" name="areaName" class="contentInput" id="areaName" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

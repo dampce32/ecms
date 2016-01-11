@@ -1,0 +1,34 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="messageInit" id="${id}">
+	<div data-options="region:'center',border:false,title:'收件人'">
+		<div id="list_${id}"></div>
+	</div>
+	<div data-options="region:'west',border:false,title:'短信内容',split:true" style="width: 520px;">
+	     <form id="editForm_${id}" method="post">
+	     	<input type="hidden" id="receiveIDs" name="receiveIDs"/>
+	     	<input type="hidden" id="names" name="names"/>
+	     	<input type="hidden" id="mobilePhones" name="mobilePhones"/>
+	     	<textarea style="width: 100%;" id="messageContent" name="messageContent"></textarea>
+	     	<div style="margin-top:10px;margin-left:20px;">
+		     	<input type="checkbox" name="timingCheckbox" id="timingCheckbox"/>
+				<span style="margin-left:5px;">定时</span>
+				<input type="text" name="sendTime" id="sendTime" class="Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'});"/>
+		     	<a id="saveBtn_${id}" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save'">发送</a>
+	     	</div>
+	     </form>  
+	</div>
+	<div id="editDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+				姓名：&nbsp;&nbsp;<input id="name" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				电话号码：&nbsp;&nbsp;<input id="mobilePhone" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="viewList_${id}"></div>
+			</div>
+		</div>
+	</div>
+	<div id="addDialog_${id}">
+		<div id="addList_${id}"></div>
+	</div>
+</div>

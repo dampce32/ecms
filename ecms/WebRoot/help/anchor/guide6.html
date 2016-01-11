@@ -1,0 +1,258 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../../css/help.css"type="text/css" >
+</head>
+
+<script>
+function clickA(v) {
+	parent.getAToc(v);
+	parent.frames['leftframe'].clearColor();
+	parent.frames['leftframe'].changeColor(v);
+	parent.changeScroll(v);
+}
+
+function shiftManager() {
+	document.getElementById('manager').style.display = '';
+	document.getElementById('user').style.display = 'none';
+	document.getElementById('mBtn').style.background = '#A4D8ED';
+	document.getElementById('uBtn').style.background = '#FFFFFF';
+}
+
+function shiftUser() {
+	document.getElementById('user').style.display = '';
+	document.getElementById('manager').style.display = 'none';
+	document.getElementById('uBtn').style.background = '#A4D8ED';
+	document.getElementById('mBtn').style.background = '#FFFFFF';
+}
+</script>
+<body>
+
+<div class="div-outer">
+<div class="div-inner">
+
+<p class="heading2"><a name="Toc2_6" >2.6&nbsp;&nbsp;如何管理项目缺陷？</a></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >请根据您的角色选择相应流程:</p>
+<div class="spacer10"></div>
+
+<div class="indentText2 div-button" style="background:#A4D8ED" id="mBtn"><a class="linkButton" href="#Toc2_6" onClick="javascript:shiftManager();">如何配置缺陷工作流</a></div>
+<div class="spacer10"></div>
+
+<div class="indentText2 div-button" id="uBtn"><a class="linkButton" href="#Toc2_6" onClick="javascript:shiftUser();">一个典型缺陷工作流</a></div>
+<div class="spacer20"></div>
+
+<div id="manager">
+<p class="indentTips" style="text-indent:0pt"><b><span>Q1</span></b>：什么是缺陷工作流？</p>
+<p class="indentNormal" style="text-indent:0pt">A：缺陷工作流指的是缺陷从创建到关闭的处理流程。
+<div class="spacer10"></div>
+<p class="indentTips" style="text-indent:0pt"><b><span>Q2</span></b>：缺陷工作流可以自定义吗？</p>
+<p class="indentNormal" style="text-indent:0pt">A：oKit发布时会自带默认的缺陷工作流，同时，也支持用户自定义工作流。
+<div class="spacer10"></div>
+<p class="indentTips" style="text-indent:0pt"><b><span>Q3</span></b>：缺陷工作流由谁来配置？</p>
+<p class="indentNormal" style="text-indent:0pt">A：配置缺陷工作流包括三个方面：</p>
+<p class="indentNormal" style="text-indent:0pt">一、系统管理员在后台设置缺陷工作流。</p>
+<p class="indentNormal" style="text-indent:0pt">二、项目负责人在缺陷管理模块中选择本项目使用的缺陷工作流。</p>
+<p class="indentNormal" style="text-indent:0pt">三、项目负责人再缺陷管理模块中设置项目参与人员的各缺陷状态转入权限。
+<div class="spacer10"></div>
+<p class="indentTips" style="text-indent:0pt"><b><span>Q4</span></b>：什么是“缺陷状态转入权限”？</p>
+<p class="indentNormal" style="text-indent:0pt">A：以状态“关闭”为例，假设用户“李小刚”是测试人员，团队规定，所有缺陷必须经由项目负责人“王小帅”确认后方可关闭，此时，可以设置用户“李小刚”<b><span style="color:#F00">没有</span></b>状态“关闭”的转入权限。这样设置以后，用户“李小刚”将无法关闭缺陷，只能转移给项目负责人“王小帅”，由他最终确认后关闭。相应的，可以设置用户“王小帅”<b><span style="color:#F00">拥有</span></b>状态“关闭”的转入权限。
+<div class="spacer10"></div>
+
+<p class="indentStep">Step1.&nbsp;&nbsp;使用系统管理员账号，登录oKit系统后台（用户名为admin，默认密码为1）</p>
+<div class="spacer10"></div>
+
+<p class="indentStep">Step2.&nbsp;&nbsp;点击进入缺陷状态维护界面</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_001.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step3.&nbsp;&nbsp;点击“添加”按钮，添加一个新的缺陷工作“我的缺陷工作流”</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_002.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">添加完成后如下图：</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_003.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step4.&nbsp;&nbsp;点击“添加状态”按钮，打开添加状态界面</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_004.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step5.&nbsp;&nbsp;点击图示按钮，打开状态选择框</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_005.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step6.&nbsp;&nbsp;勾选您希望定义的工作流所包含的状态（例如：新建，正在处置，已确认，关闭）</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_006.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">勾选成功并保存后，如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_007.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step7.&nbsp;&nbsp;点击图示按钮，为状态添加动作</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_008.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">添加动作界面如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_009.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step8.&nbsp;&nbsp;输入动作名称，选择后续状态（例如：动作名称：“指派缺陷处理人”、后续状态：“正在处置”，）</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_010.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">添加成功后如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_011.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">继续添加其他动作，完善该自定义流程，如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_012.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">至此，一个自定义的缺陷工作流已经完成。</p>
+<div class="spacer10"></div>
+
+<p class="indentStep" >Step9.&nbsp;&nbsp;登录oKit前台，点击进入项目管理模块</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/start2_011.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >Step10.&nbsp;&nbsp;点击进入项目“First Project”，缺陷管理模块</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_013.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >Step11.&nbsp;&nbsp;点击“其他操作”按钮，并点击菜单项“设置”，打开缺陷管理设置界面</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_014.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">打开后界面如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_015.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >Step12.&nbsp;&nbsp;点击“工作流程表”，打开缺陷工作流设置界面</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_016.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >Step13.&nbsp;&nbsp;点击“设置工作流”按钮，打开缺陷工作流选择窗口</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_017.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">打开后界面如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_018.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">选中“我的缺陷工作流”并点击“确定”，如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_019.png"/></p>
+<div class="spacer20"></div>
+<p class="indentNormal">至此，缺陷工作流已指定，以下将指引您设置项目参与人员的各缺陷状态转入权限。</p>
+<div class="spacer10"></div>
+
+<p class="indentStep" >Step14.&nbsp;&nbsp;点击“人员操作”，打开项目参与人员缺陷状态转入权限设置界面</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_020.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >Step15.&nbsp;&nbsp;逐个设置各用户的缺陷状态转入权限（无转入权限的状态，取消勾选）</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_021.png"/></p>
+<div class="spacer20"></div>
+
+</div>
+
+<div id="user" style="display:none">
+<p class="indentTips" style="text-indent:0pt"><b><span>Tips</span></b>：本节以默认的工作流为例（oKit2.5之前的版本所使用的工作流），介绍缺陷从创建到关闭的处理流程。</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_022.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" >Step1.&nbsp;&nbsp;<a class="linkText" href="start2.html" title="登陆okit前台" onClick="javascript:clickA('Toc1_2')">登录oKit</a>前台，点击进入项目管理模块（登录用户“王小帅”）</p>
+<div class="spacer10"></div>
+
+
+<p class="indentPic"><img src="images/start2_011.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step2.&nbsp;&nbsp;点击“缺陷管理”标签页,进入缺陷管理模块</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_023.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step3.&nbsp;&nbsp;点击“新建”按钮，新建一个缺陷任务票</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_024.png"></p>
+<div class="spacer20"></div>
+<p class="indentNormal">点击后，打开的任务票信息编辑界面如下图</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_025.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step3.&nbsp;&nbsp;输入缺陷信息，并指定处理人（例如“李小刚”）</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_026.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step4.&nbsp;&nbsp;登录用户“李小刚”，在首页可以看到该缺陷已分配给李小刚</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_027.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step5.&nbsp;&nbsp;点击进入缺陷处理界面，并处理该缺陷（缺陷已处理，返回确认）</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_028.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step6.&nbsp;&nbsp;登录用户“王小帅”，在首页可以看到李小刚返回的缺陷，点击打开查看</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_029.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step7.&nbsp;&nbsp;测试通过后，关闭该缺陷</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_030.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep">Step8.&nbsp;&nbsp;进入缺陷管理模块，查看我的全部任务票，可以看到该缺陷处于已关闭状态，至此，该缺陷处理完毕</p>
+<div class="spacer10"></div>
+<p class="indentPic"><img src="images/guide6_031.png"></p>
+<div class="spacer20"></div>
+
+
+</div>
+
+<p class="indentStep" >查看更多关于缺陷管理的资料，请<a class="linkText" href="ticket.html" onClick="javascript:clickA('Toc4_2_8')" target="rightframe">点击</a></p>
+
+<div class="spacerend"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="spacerend"></div>
+
+</div>
+</div>
+</body>
+</html>

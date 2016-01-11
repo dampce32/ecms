@@ -1,0 +1,121 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../../css/help.css"type="text/css" >
+</head>
+
+<script>
+function clickA(v) {
+	parent.getAToc(v);
+	parent.frames['leftframe'].clearColor();
+	parent.frames['leftframe'].changeColor(v);
+	parent.changeScroll(v);
+}
+
+function softDownload() {
+	var d = parent.location.host;
+	window.open("http://" + d + "/pms/openPersonalInfoFrame.action", "_blank");
+}
+</script>
+
+<body>
+
+<div class="div-outer">
+<div class="div-inner">
+
+<p class="heading2"><a name="Toc2_3" >2.3&nbsp;&nbsp;如何管理代码和文档？</a></p>
+<div class="spacer20"></div>
+
+<p class="indentStep" ><a name="step1"></a>Step1.&nbsp;&nbsp;<a class="linkText" href="start2.html" title="登陆okit前台！"  onClick="javascript:clickA('Toc1_2')">登录oKit</a>前台，点击进入项目管理模块，并进入配置管理标签页</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/start2_011.png"/></p>
+<div class="spacer20"></div>
+
+<p class="indentPic"><img src="images/guide3_001.png"></p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step2">Step2.&nbsp;&nbsp;点击添加配置项按钮，创建新的配置项</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_002.png"><br>添加配置项</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_003.png"><br>填写配置项名称，点击确定</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_004.png"><br>创建成功</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step3">Step3.&nbsp;&nbsp;选择刚创建的配置项，点击添加文件夹按钮，在配置项下创建文件夹</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_005.png"><br>添加文件夹</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_006.png"><br>填写文件夹名称，点击确定</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_007.png"><br>创建成功</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step4">Step4.&nbsp;&nbsp;选择刚创建的文件夹，点击添加文件按钮，在文件夹下添加文件</a></p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_008.png"><br>添加文件</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_009.png"><br>点击按钮</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_010.png"><br>添加成功</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step5"></a>Step5.&nbsp;&nbsp;点击授权标签页，为指定人员授权配置项</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_012.png"><br>配置项授权</p>
+<div class="spacer20"></div>
+
+<p class="indentStep"><a name="step6"></a>Step6.&nbsp;&nbsp;配置管理基于SVN服务器，可以使用任何支持HTTP协议的SVN客户端进行提交和更新，oKit提供了一个自带的配置管理客户端，可以进入<a class="linkText" onClick="javascript:softDownload();">个人中心</a>的软件下载页面进行下载，下面简单介绍一下配置管理客户端如何使用。</p>
+<div class="spacer10"></div>
+
+<p class="indentStep">安装好配置管理客户端后，点击复制SVN地址按钮，获取需要检出的SVN目录地址</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_011.png"><br>获取文件夹的SVN地址</p>
+<div class="spacer20"></div>
+
+<p class="indentStep">创建一个用于检出的文件夹，比如Project，右键点击，选择KR检出</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_013.png"><br>点击KR检出</p>
+<div class="spacer20"></div>
+
+<p class="indentStep">在版本库URL中粘贴刚才复制的SVN地址，点击确定</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_014.png"><br>粘贴地址</p>
+<div class="spacer20"></div>
+
+<p class="indentStep">填写oKit系统中的用户名和密码，注意应先给此用户授权，点击确定</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_015.png"><br>填写用户名和密码</p>
+<div class="spacer20"></div>
+
+<p class="indentStep">检出完成后，Project文件夹的图标会变为<img src="images/guide3_017.png">，表示已更新到最新</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="images/guide3_016.png"><br>检出完成</p>
+<div class="spacer20"></div>
+
+<p class="indentStep">查看更多关于配置管理的资料，请<a class="linkText" href="svn.html#Toc4_2_7" onClick="javascript:clickA('Toc4_2_7')" target="rightframe">点击</a></p>
+
+<div class="spacerend"></div>
+
+</div>
+</div>
+</body>
+</html>

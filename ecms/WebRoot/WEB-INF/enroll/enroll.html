@@ -1,0 +1,72 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="enrollInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		学生：&nbsp;&nbsp;<input id="studentSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		组别：&nbsp;&nbsp;<input id="groupSearch_${id}" type="text" style="width:200px"/>&nbsp;&nbsp;&nbsp;
+		审核状态：&nbsp;&nbsp;<select id="statusSearch" style="width: 120px;" class="easyui-combobox" data-options="editable:false" >
+								<option value="">所有</option>				
+							 	<option value="0">未审核</option>
+								<option value="1">审核通过</option>
+								<option value="2">审核不通过</option>
+						   </select>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >内部报名</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>
+		<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#state_${id}',plain:true,iconCls:'icon-state'" id="tbState_${id}">修改审核状态</a>   
+	</div>
+	<div id="state_${id}" style="width:110px;">
+		<div data-options="name:'0'">未审核</div>
+		<div data-options="name:'1'">审核通过</div>
+		<div data-options="name:'2'">审核不通过</div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="studentCompetitionGroupId" id="studentCompetitionGroupId"/>
+			<input type="hidden" name="status" id="status"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">学生：</td>
+    				<td class="tdFirstContent">
+    					<input type="text" name="student.studentId" id="student" class="contentInput"/>
+    				</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">参赛地区：</td>
+    				<td class="tdContent">
+    					<input type="text" id="province" class="contentInput"/>
+    				</td>
+				</tr>
+				<tr>
+					<td class="tdTitle"></td>
+    				<td class="tdContent">
+		    			<input type="text" id="city" class="contentInput"/>
+    				</td>
+				</tr>
+				<tr>
+					<td class="tdTitle"></td>
+    				<td class="tdContent">
+		    			<input type="text" name="area.areaId" id="area" class="contentInput"/>
+    				</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">赛事：</td>
+    				<td class="tdContent">
+    					<input type="text" id="competition" class="contentInput"/>
+    				</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">参赛组别：</td>
+    				<td class="tdContent">
+    					<input type="text" name="competitionGroup.competitionGroupId" id="competitionGroup" class="contentInput"/>
+    				</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

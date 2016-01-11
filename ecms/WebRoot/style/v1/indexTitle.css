@@ -1,0 +1,75 @@
+body{
+	background: #ebebeb;
+}
+.contentBd{
+	width: 984px;margin: 5px auto;
+	background-color: #fff
+}
+.unit{
+	background-color: #fff
+}
+.pageHead{
+   	padding: 30px 0px 0px 0px;}
+.pageHeadTitle{
+	color:rgb(85, 85, 85)
+}
+.pageContent{
+	padding: 15px;
+	margin-bottom: 30px;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+	color: inherit;
+	background-color: #fff;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;}
+.photoContent{
+	background-color: #fff;
+}	
+.baseInfoCSS .tdTitle{
+	width:100px;
+	text-align: right;
+}
+.baseInfoCSS .tdContent{
+	width:250px;
+}
+.baseInfoCSS .contentInput{
+	height:15px;
+}
+
+.infoType{
+	border:1px;
+	text-align: center;
+}
+.pagination{
+	line-height: 20px;
+	font-size: 12px
+}
+.tdThead{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center !important;
+}
+.td{
+	font-size: 14px;
+	text-align: center !important;
+}
+.tdSpan{
+	display:block;
+	word-wrap: break-word;
+	word-break: normal;
+	text-align: center !important;
+	font-size: 12px
+}
+.tableTitle{
+	text-align:center !important;
+	font-weight:bold;
+}
+.nextCompetitionStudent{
+	font-size: 12px
+}
+
+.competitionPrizeStudent{
+	font-size: 12px
+}

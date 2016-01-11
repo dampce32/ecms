@@ -1,0 +1,203 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../../css/help.css"type="text/css" >
+</head>
+
+<script>
+function clickA(v) {
+	parent.getAToc(v);
+	parent.frames['leftframe'].clearColor();
+	parent.frames['leftframe'].changeColor(v);
+	parent.changeScroll(v);
+}
+</script>
+
+<body >
+<div class="div-outer">
+<div class="div-inner">
+
+<p class="heading heading3"><a name="Toc4_2_8">4.2.8&nbsp;&nbsp;缺陷管理</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal" style="font-weight:bold;">缺陷管理主要负责任务票的管理和相关流程的处理。功能包括建立任务票、处理任务票、任务票查询、维护基础数据、分析统计等功能。</p>
+
+<p class="indentNormal">点击查看<a class="linkText" href="guide6.html#Toc2_6" onClick="javascript:clickA('Toc2_6')" >如何管理项目缺陷？</a></p>
+
+<p class="indentNormal">缺陷管理主界面如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image003.jpg"><br>图&nbsp;缺陷管理主界面</p>
+<div class="spacer20"></div>
+
+
+<p class="heading heading4"><a name="Toc4_2_8_1">4.2.8.1&nbsp;&nbsp;维护基础数据</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">实现对基础数据表的维护，包括设置缺陷处理流程、缺陷处理权限两部分。维护基础数据界面，如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image007.jpg"><br>图&nbsp;维护基础数据窗口</p>
+<div class="spacer20"></div>
+
+<p class="heading heading5"><a name="Toc4_2_8_1_1">4.2.8.1.1&nbsp;&nbsp;缺陷处理流程</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">通过基础数据管理中的工作流程表，设置项目中缺陷的工作流。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">缺陷管理的工作流程设置，请点击查看<a class="linkText" href=admin6.html#Toc3_6_2 onClick="javascript:clickA('Toc3_6_2')" >缺陷工作流</a></p>
+<div class="spacer10"></div>
+
+<p class="heading heading5"><a name="Toc4_2_8_1_2">4.2.8.1.2&nbsp;&nbsp;缺陷处理权限</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">通过基础数据管理中的人员操作，给项目中的人员授予有权转入的缺陷状态，只有拥有“有权转入的状态”权限的人员才能看到相关状态。</p>
+<div class="spacer10"></div>
+
+<p class="heading heading4"><a name="Toc4_2_8_2">4.2.8.2&nbsp;&nbsp;模板管理</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">模板在编辑任务票时可供缺陷报告人选择使用。建立一些通用的缺陷模板能有效的提高缺陷报告人的效率，如缺陷模板，改进建议模板，临时任务模板等。管理任务票模板，包括新建、修改、预览、删除四部分。模板管理界面，如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image014.jpg"><br>图&nbsp;模板管理窗口</p>
+<div class="spacer20"></div>
+
+
+
+<p class="heading heading4"><a name="Toc4_2_8_3">4.2.8.3&nbsp;&nbsp;任务票管理</a></p>
+<div class="spacer10"></div>
+
+<p class="heading heading5"><a name="Toc4_2_8_3_1">4.2.8.3.1&nbsp;&nbsp;新建任务票</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">在项目列表中选择一个项目，然后选择“缺陷管理”，通过任务票列表工具栏的“新建”添加任务票。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">任务票即缺陷报告，新建任务票需填写标题，详细的缺陷描述，缺陷所属模块，发现时间、环境，软件版本等信息。另外，缺陷的“发现人”支持手动填写。新建任务票界面如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image004.jpg"><br>
+图&nbsp;新建任务票</p>
+<div class="spacer20"></div>
+
+<p class="heading heading5"><a name="Toc4_2_8_3_2">4.2.8.3.2&nbsp;&nbsp;查看任务票</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">通过在工具栏“过滤条件”下拉框中选择不同类型来查看任务票，打开缺陷管理时，默认选择“我的活动任务票”，如下图所示</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image005.jpg"><br>
+图&nbsp;选择任务票过滤条件</p>
+<div class="spacer20"></div>
+
+<p class="heading heading5"><a name="Toc4_2_8_3_3">4.2.8.3.3&nbsp;&nbsp;任务票状态</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">任务票的状态描述了任务票的活动情况。简单的缺陷工作流有“新建”、“已打开”、“已重新打开”、“已关闭四种状态，更详细的工作流可以在系统后台自己设定。缺陷填报人提交任务票后状态为“新建”，指定的处理人接受该任务后任务票状态转变为“已打开”，bug处理完后，处理人改变任务票的状态，关闭任务票，此时任务票状态转变为“已关闭”。重新打开关闭了的任务票，任务票的状态转变为“已重新打开。任务票状态的修改在处理任务票的过程中完成。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">任务票的状态可以在任务票列表中看到。任务票的状态如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image006.jpg"><br>
+图&nbsp;任务票状态</p>
+<div class="spacer20"></div>
+
+<p class="heading heading5"><a name="Toc4_2_8_3_4">4.2.8.3.4&nbsp;&nbsp;处理任务票</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">在任务票列表中选择一条要处理的任务票，通过任务票标题的链接打开任务票进行处理。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">处理任务票的过程就是修改任务票的状态，将任务票转移给其他人并描述处理结果的过程。</p>
+<div class="spacer10"></div>
+
+<p class=MsoNormal style='text-indent:21.1pt'><b><span style='font-family:宋体'>注意：</span></b></p>
+
+<p class="indentNormal">在缺陷页面的“其他操作-设置-设置缺陷处置权限”里，可以给用户设置状态权限。只有拥有“有权转入的状态”权限的用户才能看到相关状态。</p>
+<div class="spacer10"></div>
+
+<p class="heading heading5"><a name="Toc4_2_8_3_5">4.2.8.3.5&nbsp;&nbsp;修改任务票</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">在处理任务票界面，通过“修改任务票”按钮修改任务票内容。</p>
+<div class="spacer10"></div>
+
+<p class=MsoNormal style='text-indent:21.1pt'><b><span style='font-family:宋体'>注意：</span></b></p>
+
+<p class="indentNormal">修改任务票后重新打开该任务票，界面中会显示“变更历史”即记录任务票的修改情况。</p>
+<div class="spacer10"></div>
+
+<p class="heading heading4"><a name="Toc4_2_8_4">4.2.8.4&nbsp;&nbsp;任务票查询</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">查询分为简单查询和高级查询两个功能。并可在工具栏点击“简单/高级”按钮相互切换。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">简单查询是对票号的查询，输入票号查询相应任务票。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">高级查询提供多个选择项，可选择（或输入）其中一项或多项内容组合查询。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">点击“重置”按钮将重置查询条件，重新选择。</p>
+<div class="spacer10"></div>
+
+<p class="heading heading4"><a name="Toc4_2_8_5">4.2.8.5&nbsp;&nbsp;分析统计</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">通过工具栏的“分析统计”按钮打开任务票分析统计页面。通过选择不同的选项可以查看任务票按不同属性分布的报表信息，如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image008.jpg"><br>
+图&nbsp;分析统计</p>
+<div class="spacer20"></div>
+
+<p class="indentPic"><img src="ticket.files/image009.jpg"><br>
+图&nbsp;统计拼图</p>
+<div class="spacer20"></div>
+
+<p class="heading heading4"><a name="Toc4_2_8_6">4.2.8.6&nbsp;&nbsp;输出报表</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">点击工具栏中“其他操作-输出报表”，可将当前可见的任务票列表下的全部任务票统计输出到报表中，并可输出到word。</p>
+<div class="spacer10"></div>
+
+<p class="heading heading4"><a name="Toc4_2_8_7">4.2.8.7&nbsp;&nbsp;导入导出</a></p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">任务票导出是将任务票以zip格式压缩包的形式导出，以便将其它系统或者项目的缺陷单移植到另一个项目中。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">点击工具栏的“其他操作-导出”，系统弹出导出界面。系统默认导出项目全部任务票，如果选择了一个或多个过滤条件，系统将导出符合过滤条件的全部任务票。选择好过滤条件后可以打包并下载。导出窗口如下图所示：</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image010.jpg"><br>
+图&nbsp;导出窗口</p>
+<div class="spacer20"></div>
+
+<p class="indentNormal">任务票导入主要是将其他系统或项目中导出的缺陷压缩包导入到本项目的缺陷管理中。</p>
+<div class="spacer10"></div>
+
+<p class="indentNormal">选择工具栏的“导入”按钮，系统弹出如下图所示的导入准备界面，在导入准备界面中选择来源单位、目标模块以及其他的条件，然后选择“下一步”进入如下图所示的导入界面，经过上传数据包、检测标准表和导入数据的三步操作后，可以将数据包导入项目。</p>
+<div class="spacer10"></div>
+
+<p class="indentPic"><img src="ticket.files/image011.jpg"><br>
+图&nbsp;导入准备</p>
+<div class="spacer20"></div>
+
+<p class="indentPic"><img src="ticket.files/image012.jpg"><br>
+图&nbsp;导入缺陷</p>
+<div class="spacer20"></div>
+
+<div class="spacerend"></div>
+
+</div>
+</div>
+
+</body>
+
+</html>

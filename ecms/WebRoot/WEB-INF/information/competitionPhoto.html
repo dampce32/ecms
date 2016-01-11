@@ -1,0 +1,102 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="competitionPhotoInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		类别：<input id="photoTypeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search_${id}" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="tb_${id}">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="add_${id}" >新建</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="mulAdd_${id}" >批量新建</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" id="update_${id}" >修改</a>  
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" id="delete_${id}" >删除</a>  
+		<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#state_${id}',plain:true,iconCls:'icon-state'" id="tbState_${id}">状态</a> 
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true" id="moveUp_${id}" >上移</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true" id="moveDown_${id}" >下移</a>
+	</div>
+	<div id="state_${id}" style="width:90px;">
+		<div data-options="name:'1',iconCls:'icon-info'">启用</div>
+		<div data-options="name:'0',iconCls:'icon-warn'">禁用</div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}"  method="post" enctype="multipart/form-data">
+			<input type="hidden" name="competitionPhotoId"  id="competitionPhotoId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">赛事：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="competition.competitionId" class="contentInput" id="competition" />
+						<span style="color:red">*</span>
+					</td>
+					<td rowspan="4" colspan="2" style="padding: 10px 0px 0px 10px">	
+						<img src="#" width="200" height="200" id="competititionPhoto"/>
+					</td> 
+				</tr>
+				<tr>
+					<td class="tdFirstTitle">类型：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="photoType"  id="photoType" class="contentInput" />
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上传图片：</td>
+					<td class="tdContent">
+						<div id="uploadPicture1" style="*margin:2px 0px 0px 5px;width: 250px"></div>
+						<input type="hidden" name="picture.pictureId" id="pictureId">
+						<span style="color:red;float: right;margin-top: -25px">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">图片说明：</td>
+					<td class="tdContent">
+						<textarea id="note" name="note" style="width:300px;height:100px"></textarea>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+	
+	<div id="mulAddDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" style="height: 40px;overflow: hidden;padding:5px">
+				<form method="post"  id="mulAddForm_${id}"  method="post" enctype="multipart/form-data">
+					<input type="hidden" name="pictureIds"  id="pictureIds"/>
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">赛事：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="competition.competitionId" class="contentInput" id="competition" />
+								<span style="color:red">*</span>
+							</td>
+							<td class="tdFirstTitle">类型：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="photoType"  id="photoType" class="contentInput"/>
+								<span style="color:red">*</span>
+							</td>
+						</tr>
+					</table>
+		    	</form>
+			</div>
+	    	<div data-options="region:'center',title:'图片',tools:'#tt'" style="width: 100%;height:100%;border-left: none">
+				<ul id ="pictureArea"></ul>
+			</div>
+		</div>
+	</div>
+	<style type="text/css">
+	#pictureArea li{float:left;margin-right:14px;margin-bottom:13px;display:inline;width:200px;height:130px;overflow:hidden;position:relative;}
+	#pictureArea .text{position:absolute;width:200px;height:130px;left:-200px;top:0px;overflow:hidden;}
+	#pictureArea .text a{cursor:pointer; }
+	#pictureArea .text h4{width:200px;margin-top:50px;height:55px;line-height:55px;text-align:center;background-color:#ffffff;filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;z-index:100;font-family:"microsoft yahei";font-size:15px;}
+	</style>
+	<div id="tt">
+		<a href="#" class="icon-add" id="mulBtn_${id}"></a>
+	</div>
+	<div id="uploadPictureDialog_${id}">
+		<div id="uploadPicture" style="*margin:2px 0px 0px 5px">
+		</div>
+	</div>
+</div>

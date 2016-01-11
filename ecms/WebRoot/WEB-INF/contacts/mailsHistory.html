@@ -1,0 +1,13 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="mailsHistoryInit"  id="${id}" rightId ="${rightId}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		起始日期：&nbsp;&nbsp;<input id="beginDate" type="text" class="queryInput" readonly="readonly" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		终止日期：&nbsp;&nbsp;<input id="endDate" type="text" class="queryInput" readonly="readonly" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0)" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	<div id="editDialog_${id}">
+		<div id="detailList_${id}"></div>
+	</div>
+</div>
